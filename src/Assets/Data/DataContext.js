@@ -1,6 +1,8 @@
+import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "./baseUrl";
 
 const DataContext = createContext();
 
@@ -25,11 +27,29 @@ function DataProvider({ children }) {
             navigate("/login");
         }
     }
+
+    const logout = async (email) => {
+        try {
+            const response = await axios.post(
+                `${baseUrl}/Auth/logout`,
+                `"${email}"`,  
+                { headers: { 'Content-Type': 'application/json' } }
+            );
     
-    const logout = () => {
-        localStorage.removeItem("token");
-        navigate("/login");
-    }
+            if (response.status === 200) {
+                localStorage.removeItem("token");
+                navigate("/login");
+            } else {
+                console.error('Logout failed:', response.data);
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+    };
+    
+    
+    
+    
 
     let values = {
         token,

@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyle from "./Assets/Styles/GlobalStyle";
 import { DataProvider } from './Assets/Data/DataContext';
 import { BrowserRouter } from 'react-router-dom';
+import Header from './Layouts/Header/Header';
+import Footer from './Layouts/Footer/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +14,9 @@ root.render(
     <BrowserRouter>
       <GlobalStyle>
         <DataProvider>
+          <Header/>
           <App />
+          <Footer/>
         </DataProvider>
       </GlobalStyle>
     </BrowserRouter>
