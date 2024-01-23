@@ -1,48 +1,57 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../Assets/Data/DataContext';
-
+import { getItem } from '../../Services/apiService';
 function Login(props) {
-    const [user, setUser] = useState({ name: "", password: "" });
-    const {login} = useContext(DataContext);
+    const [user, setUser] = useState({ email: "", password: "" });
+    const { login } = useContext(DataContext);
+
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value });
     }
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (user.email && user.password) {
-            axios.post("http://localhost:5157/api/Auth", user)
+            await axios.post("http://localhost:5085/api/Auth", user)
                 .then(res => {
                     if (res.status === 200) {
                         let tokenString = res.data.token;
+                        console.log("Undecoded token: ", tokenString);
                         login(tokenString);
                     }
                 })
                 .catch(error => {
                     if (error.status === 404) {
-                        console.log("Invalid credentials")
+                        alert("Invalid creadentials")
                     } else {
                         console.log("Something went wrong: ", error)
                     }
                 })
         }
     }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3 mt-3">
-                    <label for="email" className="form-label">Email:</label>
+                    <label htmlFor="email" className="form-label">Email:</label>
                     <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" onChange={handleChangeInput} />
                 </div>
                 <div className="mb-3">
-                    <label for="pwd" className="form-label">Password:</label>
-                    <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="pswd" onChange={handleChangeInput} />
+                    <label htmlFor="pwd" className="form-label">Password:</label>
+                    <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="password" onChange={handleChangeInput} />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
+
+            <div>
+                <button onClick={getItem} className='btn btn-primary'>Get all users informations</button>
+            </div>
         </div>
+
     );
 }
 

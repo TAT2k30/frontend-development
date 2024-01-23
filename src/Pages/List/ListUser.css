@@ -1,0 +1,23 @@
+/* ListUser.css */
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+  }
+  
+  .actions-btn {
+    margin-right: 5px;
+  }
+  

@@ -1,40 +1,49 @@
-import { jwtDecode } from 'jwt-decode';
-import React, { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DataContext = createContext();
+
 function DataProvider({ children }) {
+    /* 
+    ==> Token service
+    */
     let tokenLocal = localStorage.getItem("token");
-    const [token, setToken] = useState(jwtDecode(tokenLocal)||"");
+    const [token, setToken] = useState(tokenLocal ? jwtDecode(tokenLocal) : "");
     const navigate = useNavigate();
-    const logIn = (tokenString) =>{
+    /* 
+    ==> Authenication service
+    */
+    const login = (tokenString) => {
         localStorage.setItem("token", tokenString);
         const decodeToken = jwtDecode(tokenString);
-        if(decodeToken.Role == "Admin" || decodeToken.Role == "User"){
-           navigate("/list");
-        }else{
+        console.log("Decoded token: ", decodeToken);
+        alert(`Login successfull, welcome ${decodeToken.UserName}`)
+        if (decodeToken.Role === "Admin") {
+            navigate("/list");
+        } else {
             navigate("/login");
         }
     }
-    const logOut = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
+    
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
     }
+
     let values = {
         token,
-        logIn,
-        logOut,
-        setToken
+        setToken,
+        login,
+        logout
     }
+
     return (
-        <div>
-            <DataContext.Provider value={values}>
-                {children}
-            </DataContext.Provider>
-        </div>
+        <DataContext.Provider value={values}>
+            {children}
+        </DataContext.Provider>
     );
 }
-
 
 export {
     DataContext,
