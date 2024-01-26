@@ -8,11 +8,11 @@ function App() {
   const tokenLocal = localStorage.getItem("token");
   const decodedToken = tokenLocal ? jwtDecode(tokenLocal) : null;
   const navigate = useNavigate();
-  useEffect(() => {
-    if (tokenLocal === null || tokenLocal === "") {
-      navigate("/login");
-    }
-  }, [navigate, tokenLocal]);
+  // useEffect(() => {
+  //   if (tokenLocal === null || tokenLocal === "") {
+  //     navigate("/login");
+  //   }
+  // }, [navigate, tokenLocal]);
   return (
     
     <div className="container">

@@ -1,6 +1,6 @@
 
 import React, { useContext, useEffect} from 'react';
-import { DataContext } from '../../Assets/Data/DataContext';
+import { DataContext } from '../../../Assets/Data/DataContext';
 import './ListUser.css';
 
 function ListUser(props) {

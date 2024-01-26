@@ -1,25 +1,30 @@
-import CreatePage from "../Pages/Create/CreatePage";
-import ListUser from "../Pages/List/ListUser";
-import Login from "../Pages/Login/Login";
+import CreatePage from "../Pages/Admin/Create/CreatePage";
+import ListUser from "../Pages/Admin/List/ListUser";
+import Login from "../Pages/User/Login/Login";
+import Register from "../Pages/User/Register/Register";
 
 const publicRouter = [
     {
-        path :'/login',
-        element : <Login/>
+        path: '/login',
+        element: <Login />
     },
+    {
+        path: "/register",
+        element: <Register />
+    }
 ]
 
 const privateRouter = [
     {
-        path : '/list',
-        element : <ListUser/>
+        path: '/list',
+        element: <ListUser />
     },
     {
         path: '/create',
-        element: <CreatePage/>
+        element: <CreatePage />
     }
 ]
-export{
+export {
     publicRouter,
     privateRouter
 }

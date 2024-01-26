@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../../Assets/Data/DataContext';
-import './Header.css'; 
+import './Header.css';
 
 
 
@@ -18,11 +18,14 @@ function Header() {
                     <div>
                         <span>Welcome, {token.UserName}</span>
                         <img src={token.AvatarUrl} width={50} className='imgAvatar' alt="User Avatar" />
-                        
-                        <button onClick={()=>{logout(token.Email)}} className='btn btn-warning'>Logout</button>
+
+                        <button onClick={() => { logout(token.Email) }} className='btn btn-warning'>Logout</button>
                     </div>
                 ) : (
-                    <Link to="/login">Login</Link>
+                    <div>
+                        <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
+                        <Link to="/register">Register</Link>
+                    </div>
                 )}
             </div>
         </div>
