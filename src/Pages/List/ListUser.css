@@ -1,23 +1,81 @@
 /* ListUser.css */
 
 .card-header {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .table th,
-  .table td {
-    text-align: center;
-  }
-  
-  .actions-btn {
-    margin-right: 5px;
-  }
-  
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.actions-btn {
+  margin-right: 5px;
+}
+
+.imgAvatar {
+  width: 50px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.status-text {
+  font-weight: bold;
+}
+
+.last-login {
+  margin-left: 10px;
+}
+
+.status-indicator.online {
+  background-color: #28a745;
+}
+
+.status-indicator.offline {
+  background-color: #6c757d;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
+
+/* Add hover effect for buttons */
+.actions-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
