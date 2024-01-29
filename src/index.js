@@ -5,9 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyle from "./Assets/Styles/GlobalStyle";
 import { DataProvider } from './Assets/Data/DataContext';
 import { BrowserRouter } from 'react-router-dom';
-import Header from './Layouts/Header/Header';
-import Footer from './Layouts/Footer/Footer';
-
+import Header from './Pages/User/DefaultLayout/Header/Header';
+import Footer from './Pages/User/DefaultLayout/Footer/Footer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

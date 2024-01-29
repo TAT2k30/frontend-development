@@ -19,7 +19,6 @@ function DataProvider({ children }) {
     const login = (tokenString) => {
         localStorage.setItem("token", tokenString);
         const decodeToken = jwtDecode(tokenString);
-        console.log("Decoded token: ", decodeToken);
         if (decodeToken.Role === "Admin") {
             setToken(decodeToken);
             navigate("/list");

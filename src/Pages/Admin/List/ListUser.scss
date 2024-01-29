@@ -1,4 +1,4 @@
-/* ListUser.css */
+/* ListUser.scss */
 
 .card-header {
   background-color: #007bff;
@@ -6,6 +6,7 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center; // Center align items vertically
 }
 
 .card-body {
@@ -22,18 +23,30 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+/* ListUser.scss */
+
+.filter-area {
+  margin-bottom: 20px;
+
+  label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  
+  
+}
 
 .user-name {
   font-weight: bold;
 }
 
-.table th,
-.table td {
-  text-align: center;
-}
-
-.actions-btn {
-  margin-right: 5px;
+.table {
+  th,
+  td {
+    text-align: center;
+  }
 }
 
 .imgAvatar {
@@ -74,8 +87,22 @@
   color: #6c757d;
 }
 
-/* Add hover effect for buttons */
-.actions-btn:hover {
-  background-color: #007bff;
-  color: white;
+.actions-btn-delete{
+  margin-left: 10px;
+}
+.actions-btn-delete:hover {
+  color: rgb(124, 19, 19);
+  cursor: pointer;
+ 
+}
+.actions-btn-edit:hover {
+  color: rgb(3, 51, 149);
+  cursor: pointer;
+}
+.actions-btn-view{
+  margin-left: 10px;
+}
+.actions-btn-view:hover {
+  color: rgb(37, 203, 240);
+  cursor: pointer;
 }

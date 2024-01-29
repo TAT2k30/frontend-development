@@ -28,7 +28,7 @@ function Login(props) {
       setLoading(true);
 
       try {
-        const response = await axios.post("http://localhost:5085/api/Auth", values);
+        const response = await axios.post("http://localhost:5085/api/Auth/login", values);
         const tokenString = response.data.token;
         console.log("Undecoded token: ", tokenString);
         login(tokenString);
