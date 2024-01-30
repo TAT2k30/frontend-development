@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import './SignUp.scss';
-function Register() {
+function SignUp() {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -130,4 +130,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default SignUp;

@@ -1,7 +1,8 @@
 import CreatePage from "../Pages/Admin/Create/CreatePage";
 import ListUser from "../Pages/Admin/List/ListUser";
 import Login from "../Pages/User/Login/Login";
-import Register from "../Pages/User/SignUp/SignUp";
+import SignUp from "../Pages/User/SignUp/SignUp";
+
 
 const publicRouter = [
     {
@@ -9,8 +10,8 @@ const publicRouter = [
         element: <Login />
     },
     {
-        path: "/register",
-        element: <Register />
+        path: "/signup",
+        element: <SignUp />
     }
 ]
 
