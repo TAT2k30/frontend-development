@@ -1,5 +1,6 @@
 import CreatePage from "../Pages/Admin/Create/CreatePage";
 import ListUser from "../Pages/Admin/List/ListUser";
+import Content from "../Pages/User/DefaultLayout/Content/Content";
 import Login from "../Pages/User/Login/Login";
 import SignUp from "../Pages/User/SignUp/SignUp";
 
@@ -12,6 +13,10 @@ const publicRouter = [
     {
         path: "/signup",
         element: <SignUp />
+    },
+    {
+        path: "/",
+        element: <Content/>
     }
 ]
 

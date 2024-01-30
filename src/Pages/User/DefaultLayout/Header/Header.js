@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../../../../Assets/Data/DataContext';
-import './Header.css';
+import './Header.scss';
 
 
 
@@ -10,8 +10,8 @@ function Header() {
     return (
         <div className="header-container">
             <div className="left-links">
-                <Link to="/about">About Us</Link>
-                <Link to="/contact">Contact</Link>
+                <Link to="/">Home</Link>
+                <Link to="/create">Create</Link>
             </div>
             <div className="right-info">
                 {token ? (

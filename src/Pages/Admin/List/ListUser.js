@@ -42,7 +42,8 @@ function ListUser(props) {
   }, []);
 
   return (
-    <div className="card mt-4">
+    <div className='admin-list'>
+      <div className="card mt-4">
       <div className="card-header">
         <h2>User Data</h2>
         <div className="user-info">
@@ -132,6 +133,7 @@ function ListUser(props) {
           <span>There is no data</span>
         )}
       </div>
+    </div>
     </div>
   );
 }
