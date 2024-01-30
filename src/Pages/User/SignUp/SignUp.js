@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import "./SignUp.scss";
+import { Axios } from "axios";
+import { baseUrl } from "../../../Assets/Data/baseUrl";
 function SignUp() {
   const formik = useFormik({
     initialValues: {
@@ -33,7 +35,14 @@ function SignUp() {
       try {
         // Perform your registration logic using axios or any other method
         // Example:
-        // const response = await axios.post('YOUR_REGISTRATION_API_ENDPOINT', values);
+        const response = await Axios.post(`${baseUrl}/Auth/register`, values)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         // Handle success or display appropriate messages
         console.log("Registration successful!");
       } catch (error) {
@@ -45,7 +54,7 @@ function SignUp() {
 
   return (
     <div className="signup-form">
-      <Container className="mt-5 registration-container">
+      <Container className="registration-container">
         <Form onSubmit={formik.handleSubmit}>
           <Form.Group controlId="formEmail" className="form-group">
             <Form.Label>Email</Form.Label>
@@ -63,7 +72,6 @@ function SignUp() {
               {formik.errors.email}
             </Form.Control.Feedback>
           </Form.Group>
-
           <Form.Group controlId="formGender" className="form-group">
             <Form.Label>Gender</Form.Label>
             <Form.Control
@@ -78,12 +86,12 @@ function SignUp() {
               <option value="">Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
+              <option value="other">Other</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid" className="invalid-feedback">
               {formik.errors.gender}
             </Form.Control.Feedback>
           </Form.Group>
-
           <Form.Group controlId="formDateOfBirth" className="form-group">
             <Form.Label>Date of Birth</Form.Label>
             <Form.Control
@@ -101,7 +109,6 @@ function SignUp() {
               {formik.errors.dateOfBirth}
             </Form.Control.Feedback>
           </Form.Group>
-
           <Form.Group controlId="formUserName" className="form-group">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -118,7 +125,6 @@ function SignUp() {
               {formik.errors.userName}
             </Form.Control.Feedback>
           </Form.Group>
-
           <Form.Group controlId="formPassword" className="form-group">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -136,6 +142,23 @@ function SignUp() {
             </Form.Control.Feedback>
           </Form.Group>
 
+          {/* NÊN LÀM THÊM CÁI CONFIRM PASSWORD
+           <Form.Group controlId="formConfirmPassword" className="form-group">
+            <Form.Label>Confirm-Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter confirm-password"
+              name="confirmpassword"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isInvalid={formik.touched.password && formik.errors.password}
+              required
+            />
+            <Form.Control.Feedback type="invalid" className="invalid-feedback">
+              {formik.errors.password}
+            </Form.Control.Feedback>
+          </Form.Group> */}
           <Button className="btn-register" variant="primary" type="submit">
             Register
           </Button>
@@ -143,7 +166,6 @@ function SignUp() {
       </Container>
     </div>
   );
-  //thkng ngu tieen
 }
 
 export default SignUp;

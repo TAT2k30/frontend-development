@@ -1,6 +1,6 @@
 .header-container {
   background-color: #e1dada;
-  color: white;
+  // color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,25 @@
 .right-info span {
   margin-right: 10px;
 }
-.imgAvatar{
-    height: 50px;
-    border-radius: 50px;
+.imgAvatar {
+  height: 50px;
+  border-radius: 50px;
+}
+
+.right-links {
+  border: 1px;
+  border-radius: 20px;
+}
+
+.btn {
+  // background-color: #e46a6a;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #e46a6a;
+}
+
+.right-links a {
+  text-decoration: none;
 }
