@@ -24,7 +24,7 @@ function Header() {
                 ) : (
                     <div>
                         <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
-                        <Link to="/register">Register</Link>
+                        <Link to="/signup">Register</Link>
                     </div>
                 )}
             </div>
