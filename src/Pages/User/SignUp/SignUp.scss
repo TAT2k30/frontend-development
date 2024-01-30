@@ -1,0 +1,59 @@
+// SignupForm.scss
+
+.signup-form {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    height: 100vh;
+  
+    .registration-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #000000;
+      opacity: 0.9;
+  
+      h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+  
+      .form-group {
+        text-align: left;
+        margin-bottom: 10px;
+      }
+  
+      .form-label {
+        font-weight: bold;
+        font-size: 0.9em;
+      }
+  
+      .form-control {
+        margin-bottom: 15px;
+        font-size: 0.8em;
+      }
+  
+      .btn-register {
+        background-color: #007bff;
+        color: #fff;
+        &:hover {
+          background-color: #0056b3;
+        }
+        font-size: 1em;
+      }
+  
+      .invalid-feedback {
+        display: block;
+        margin-top: 5px;
+        color: #dc3545;
+        font-size: 0.8em;
+      }
+    }
+  }
+  

@@ -1,7 +1,7 @@
 import CreatePage from "../Pages/Admin/Create/CreatePage";
 import ListUser from "../Pages/Admin/List/ListUser";
 import Login from "../Pages/User/Login/Login";
-import Register from "../Pages/User/Register/Register";
+import Register from "../Pages/User/SignUp/SignUp";
 
 const publicRouter = [
     {

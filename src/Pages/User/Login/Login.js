@@ -50,8 +50,8 @@ function Login(props) {
   });
 
   return (
-    <div>
-        <div>Check out your revious login</div>
+    <div className='login-form'>
+        <div style={{}}>Check out your revious login</div>
     <div className="login-container">
       <form onSubmit={formik.handleSubmit}>
         {error && <div className="alert" role="alert">{error}</div>}
@@ -83,7 +83,7 @@ function Login(props) {
           />
           {formik.touched.password && formik.errors.password && <div className="invalid-feedback">{formik.errors.password}</div>}
         </div>
-        <a href="a">Don't have an account?</a>
+        <a href="/register">Don't have an account?</a>
         <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> : "Submit"}
         </button>
