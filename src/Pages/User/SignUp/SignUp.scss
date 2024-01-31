@@ -2,9 +2,9 @@
 
 .signup-form {
   height: fit-content;
-  margin: auto;
+  margin: 10px;
   display: flex;
-  height: 100vh;
+  height: auto;
 
   .registration-container {
     width: 500px;
@@ -38,6 +38,10 @@
       font-size: 0.8em;
     }
 
+    .register {
+      display: flex;
+      justify-content: right;
+    }
     .btn-register {
       background-color: #007bff;
       color: #fff;
@@ -45,12 +49,11 @@
         background-color: aqua;
       }
       font-size: 1em;
-      border: none;
     }
 
     .invalid-feedback {
       display: block;
-      margin-top: 5px;
+      margin-top: 0px;
       color: #dc3545;
       font-size: 0.8em;
     }

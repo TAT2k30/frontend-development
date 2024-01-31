@@ -83,7 +83,7 @@ function SignUp() {
               isInvalid={formik.touched.gender && formik.errors.gender}
               required
             >
-              <option value="">Select Gender</option>
+              <option value="">Choose gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
@@ -159,9 +159,11 @@ function SignUp() {
               {formik.errors.password}
             </Form.Control.Feedback>
           </Form.Group> */}
-          <Button className="btn-register" variant="primary" type="submit">
-            Register
-          </Button>
+          <div className="register">
+            <Button className="btn-register" variant="primary" type="submit">
+              Register
+            </Button>
+          </div>
         </Form>
       </Container>
     </div>
