@@ -1,45 +1,31 @@
+/* Header.scss */
 .header-container {
-  background-color: #e1dada;
-  // color: white;
-  padding: 10px;
+  background-color: #3498db; /* Màu sắc nền mới */
+  color: white;
+  padding: 15px; /* Tăng khoảng cách giữa các phần tử trong header */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 55px;
+  height: 65px; /* Điều chỉnh chiều cao */
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
-}
-
-.nav-bar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.nav-bar li {
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.nav-bar li:hover {
-  text-decoration: underline;
-}
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #f0f0f0;
+  color: white;
+  text-decoration: none;
 }
 
 .left-links a {
-  margin-right: 10px;
+  margin-right: 20px;
   text-decoration: none;
-  color: #e46a6a;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.left-links a:hover {
+  color: #ec7063;
 }
 
 .right-info {
@@ -49,24 +35,33 @@
 
 .right-info span {
   margin-right: 10px;
+  font-size: 16px;
 }
+
 .imgAvatar {
   height: 50px;
-  border-radius: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .right-links {
-  border: 1px;
-  border-radius: 20px;
+  display: flex;
+  gap: 10px;
 }
 
 .btn {
-  // background-color: #e46a6a;
+  background-color: #ec7063;
   color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #e46a6a;
+  background-color: #c0392b;
 }
 
 .right-links a {
