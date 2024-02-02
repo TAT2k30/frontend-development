@@ -1,41 +1,82 @@
-/* Header.scss */
 .header-container {
-  background-color: #3498db; /* Màu sắc nền mới */
-  color: white;
-  padding: 15px; /* Tăng khoảng cách giữa các phần tử trong header */
+  background-color: #1D1B1B;
+  color: #EC4D37;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 65px; /* Điều chỉnh chiều cao */
+  height: 65px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  color: #EC4D37;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
+}
+
+.left-links {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .left-links a {
   margin-right: 20px;
   text-decoration: none;
-  color: white;
+  color: #EC4D37;
   font-size: 16px;
   transition: color 0.3s ease;
+
+  &:hover {
+    color: #e27b6d;
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
-.left-links a:hover {
-  color: #ec7063;
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 60%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .right-info {
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 }
 
 .right-info span {
   margin-right: 10px;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
 }
 
 .imgAvatar {
@@ -43,25 +84,38 @@
   width: 50px;
   border-radius: 50%;
   margin-right: 10px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
 .right-links {
   display: flex;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .btn {
-  background-color: #ec7063;
-  color: white;
+  background-color: #564b49;
+  color: #EC4D37;
   padding: 8px 16px;
   border-radius: 5px;
   font-size: 16px;
   text-decoration: none;
   transition: background-color 0.3s ease;
-}
 
-.btn:hover {
-  background-color: #c0392b;
+  &:hover {
+    background-color: #aa847f;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 }
 
 .right-links a {

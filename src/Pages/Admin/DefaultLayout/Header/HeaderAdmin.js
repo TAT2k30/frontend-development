@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { DataContext } from "../../../../Assets/Data/DataContext";
-import "./Header.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
+import "./Header.scss";
 
 function HeaderAdmin() {
   const { token, logout } = useContext(DataContext);
+
   return (
     <div className="header-container">
       <div className="left-links">
@@ -14,23 +17,20 @@ function HeaderAdmin() {
       </div>
       <div className="right-info">
         {token ? (
-          <div>
-            <span>Welcome, {token.UserName}</span>
+          <div className="dropdown-container">
             <img
               src={token.AvatarUrl}
-              width={50}
               className="imgAvatar"
               alt="User Avatar"
+              style={{ maxWidth: "37px", maxHeight: "37px" }}
             />
-
-            <button
-              onClick={() => {
-                logout(token.Email);
-              }}
-              className="btn btn-warning"
-            >
-              Logout
-            </button>
+            
+            <FontAwesomeIcon
+              size="lg"
+              icon={faSignInAlt}
+              width={30}
+              onClick={()=>{logout(token.Email)}}
+            />
           </div>
         ) : (
           <div className="right-links">

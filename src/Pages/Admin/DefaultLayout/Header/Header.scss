@@ -1,69 +1,109 @@
 /* Header.scss */
 .header-container {
-  background-color: #3498db; /* Màu sắc nền mới */
+  background-color: #3498db;
   color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 65px; /* Điều chỉnh chiều cao */
+  height: 65px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white; /* Màu chữ mới */
-  text-decoration: none;
-}
+.left-links {
+  a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.3s ease;
 
-.left-links a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: white;
-  font-size: 16px; /* Kích thước chữ mới */
-  transition: color 0.3s ease; /* Hiệu ứng màu khi hover */
-}
-
-.left-links a:hover {
-  color: #ec7063; /* Màu chữ khi hover mới */
+    &:hover {
+      color: #ec7063;
+    }
+  }
 }
 
 .right-info {
   display: flex;
   align-items: center;
-}
 
-.right-info span {
-  margin-right: 10px;
-  font-size: 16px; /* Kích thước chữ mới */
-}
+  .dropdown-container {
+    position: relative;
+    display: flex;
+    align-items: center;
 
-.imgAvatar {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
+    .imgAvatar {
+      height: 37px;
+      width: 37px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-right: 10px;
+    }
 
-.right-links {
-  display: flex;
-  gap: 10px;
-}
+    .navbar {
+      .nav-link {
+        color: white;
+        &:hover {
+          color: #ec7063;
+        }
+      }
 
-.btn {
-  background-color: #ec7063; /* Màu nền nút mới */
-  color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
-  font-size: 16px; /* Kích thước chữ mới */
-  text-decoration: none;
-  transition: background-color 0.3s ease; /* Hiệu ứng màu khi hover */
-}
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
 
-.btn:hover {
-  background-color: #c0392b; /* Màu nền nút khi hover mới */
-}
+        // Custom class for leftward shift
+        &.leftward-shift {
+          left: 0;
+          transform: translateX(-100%);
+        }
 
-.right-links a {
-  text-decoration: none;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 5px;
+        display: none;
+        z-index: 1;
+
+        &.show {
+          display: block;
+        }
+
+        .dropDownElement {
+          a {
+            display: block;
+            padding: 8px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #f5f5f5;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right-links {
+    display: flex;
+    gap: 10px;
+
+    .btn {
+      background-color: #ec7063;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c0392b;
+      }
+    }
+  }
 }

@@ -1,0 +1,28 @@
+// SideBar.scss
+.sidebar {
+    width: 200px;
+    background-color: #1D1B1B;
+    color: #1D1B1B;
+    padding: 20px;
+    a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #ED4D37;
+        font-weight: bold;
+
+        &:hover {
+            color: #e1796c;
+        }
+    }
+}
+
+.sidebar-expanded {
+    margin-left: 0; /* Change to the desired value when expanded */
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-collapsed {
+    margin-left: -200px; /* Change to the negative width of the sidebar when collapsed */
+    transition: margin-left 0.3s ease;
+}
