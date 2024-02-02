@@ -1,7 +1,20 @@
-/* Main.scss */
+// Main.scss
+.toggle-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #2980b9;
+    }
+}
+
 .dashboard-container {
     display: flex;
-    flex-direction: column;
     height: 100vh;
 }
 
@@ -13,9 +26,8 @@
 
 .main-content {
     flex: 1;
-    padding: 20px;
-    background-color: #f4f4f4;
-    white-space: nowrap;
+    padding: 10px;
+    height: 100%;
 }
 
 .dashboard-links {
@@ -26,15 +38,15 @@
 
 .dashboard-links a {
     text-decoration: none;
-    color: #333;
+    color: #3498db;
     padding: 10px;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #ecf0f1;
     transition: background-color 0.3s ease;
-}
 
-.dashboard-links a:hover {
-    background-color: #e0e0e0;
+    &:hover {
+        background-color: #bdc3c7;
+    }
 }
 
 .dashboard-widgets {

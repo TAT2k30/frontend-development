@@ -1,9 +1,14 @@
-import React from 'react';
 
-function SideBar(props) {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './SideBar.scss';
+
+function SideBar() {
     return (
-        <div>
-            
+        <div className="sidebar">
+            <Link to="/admin/dashboard">Dashboard</Link>
+            <Link to="/admin/users">Users</Link>
+            <Link to="/admin/products">Products</Link>
         </div>
     );
 }
