@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "./baseUrl";
+import { AdminPath, UserPath} from "../../Routes/routerList";
 
 const DataContext = createContext();
 
@@ -21,9 +22,13 @@ function DataProvider({ children }) {
         const decodeToken = jwtDecode(tokenString);
         if (decodeToken.Role === "Admin") {
             setToken(decodeToken);
-            navigate("/list");
+            navigate(AdminPath.MainLayout);
         } else {
-            navigate("/login");
+            navigate(UserPath.Login);
+        }
+        if(decodeToken.Role === "User"){
+            setToken(decodeToken);
+            navigate(UserPath.MainLayout)
         }
     }
 
@@ -38,7 +43,7 @@ function DataProvider({ children }) {
             if (response.status === 200) {
                 localStorage.removeItem("token");
                 setToken("");
-                navigate("/login");
+                navigate(UserPath.Login);
             } else {
                 console.error('Logout failed:', response.data);
             }

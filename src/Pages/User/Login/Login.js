@@ -6,10 +6,10 @@ import * as Yup from "yup";
 import "./Login.scss";
 
 function Login(props) {
+
   const { login } = useContext(DataContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -56,72 +56,90 @@ function Login(props) {
 
   return (
     <div className="login-form">
-      <div style={{}}>Check out your revious login</div>
-      <div className="login-container">
-        <form onSubmit={formik.handleSubmit}>
-          {error && (
-            <div className="alert" role="alert">
-              {error}
-            </div>
-          )}
-          <div className="mb-3 mt-3">
-            <label htmlFor="email" className="form-label">
-              <b>Email:</b>
-            </label>
-            <input
-              type="text"
-              className={`form-control ${
-                formik.touched.email && formik.errors.email ? "is-invalid" : ""
-              }`}
-              id="email"
-              placeholder="Enter email"
-              name="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email && (
-              <div className="invalid-feedback">{formik.errors.email}</div>
-            )}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              <b>Password:</b>
-            </label>
-            <input
-              type="password"
-              className={`form-control ${
-                formik.touched.password && formik.errors.password
-                  ? "is-invalid"
-                  : ""
-              }`}
-              id="password"
-              placeholder="Enter password"
-              name="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-            />
-            {formik.touched.password && formik.errors.password && (
-              <div className="invalid-feedback">{formik.errors.password}</div>
-            )}
-          </div>
+      <div className="checkout-section">
+        <div className="checkout-heading">Previous Logins</div>
+        {/* Display previous logins as cards */}
+        {/* Example card */}
+        <div className="checkout-card">
+          <p>Email: example@email.com</p>
+          <p>Last Login: 2022-02-02 10:30 AM</p>
+        </div>
 
-          <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? (
-              <span
-                className="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
-            ) : (
-              "Submit"
+        {/* Add more cards dynamically based on previous logins */}
+      </div>
+
+      <div className="login-container">
+        <div className="login-form-inner">
+          <h2>Login</h2>
+          <form onSubmit={formik.handleSubmit}>
+            {error && (
+              <div className="alert" role="alert">
+                {error}
+              </div>
             )}
-          </button>
-          <div>
-            <a href="/register">Don't have an account?</a>
-          </div>
-        </form>
+            <div className="mb-3 mt-3">
+              <label htmlFor="email" className="form-label">
+                <b>Email:</b>
+              </label>
+              <input
+                type="text"
+                className={`form-control ${
+                  formik.touched.email && formik.errors.email
+                    ? "is-invalid"
+                    : ""
+                }`}
+                id="email"
+                placeholder="Enter email"
+                name="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email && (
+                <div className="invalid-feedback">{formik.errors.email}</div>
+              )}
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                <b>Password:</b>
+              </label>
+              <input
+                type="password"
+                className={`form-control ${
+                  formik.touched.password && formik.errors.password
+                    ? "is-invalid"
+                    : ""
+                }`}
+                id="password"
+                placeholder="Enter password"
+                name="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              {formik.touched.password && formik.errors.password && (
+                <div className="invalid-feedback">
+                  {formik.errors.password}
+                </div>
+              )}
+            </div>
+
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? (
+                <span
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              ) : (
+                "Submit"
+              )}
+            </button>
+            <div>
+              <a href="/register">Don't have an account?</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
