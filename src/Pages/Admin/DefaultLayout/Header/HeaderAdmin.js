@@ -4,7 +4,7 @@ import { DataContext } from "../../../../Assets/Data/DataContext";
 import "./Header.scss";
 
 
-function Header() {
+function HeaderAdmin() {
   const { token, logout } = useContext(DataContext);
   return (
     <div className="header-container">
@@ -47,4 +47,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderAdmin;

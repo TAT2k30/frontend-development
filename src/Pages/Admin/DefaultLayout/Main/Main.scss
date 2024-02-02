@@ -8,9 +8,38 @@
 .content-wrapper {
     display: flex;
     flex: 1;
+    overflow-x: auto;
 }
 
 .main-content {
     flex: 1;
-    padding: 20px; 
+    padding: 20px;
+    background-color: #f4f4f4;
+    white-space: nowrap;
+}
+
+.dashboard-links {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dashboard-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-links a:hover {
+    background-color: #e0e0e0;
+}
+
+.dashboard-widgets {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }

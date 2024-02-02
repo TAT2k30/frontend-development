@@ -1,6 +1,6 @@
 // Main.jsx
 import React from 'react';
-import Header from '../Header/Header';
+import Header from '../Header/HeaderAdmin';
 import SideBar from '../SideBar/SideBar';
 import { Link } from 'react-router-dom';
 import './Main.scss';

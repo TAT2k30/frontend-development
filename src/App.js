@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { privateRouter, publicRouter } from './Routes/routerList';
 import { jwtDecode } from 'jwt-decode';
-import Header from './Pages/Admin/DefaultLayout/Header/Header';
+import HeaderAdmin from './Pages/Admin/DefaultLayout/Header/HeaderAdmin';
+import Header from './Pages/User/DefaultLayout/Header/Header';
 import Footer from './Pages/User/DefaultLayout/Footer/Footer';
 
 function App() {
