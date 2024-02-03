@@ -11,6 +11,7 @@ function App() {
   const decodedToken = token ? jwtDecode(token) : null;
   const location = useLocation();
   const isAdmin = decodedToken?.Role === 'Admin';
+ 
 
   useEffect(() => {
     setToken(localStorage.getItem('token'));
@@ -23,11 +24,11 @@ function App() {
       
       document.body.style.background = gradient;
     } else {
-      document.body.style.background = ''; // Đặt lại màu nền khi không phải '/signup'
+      document.body.style.background = ''; 
     }
 
     return () => {
-      document.body.style.backgroundColor = ''; // Đặt lại màu nền khi component unmount
+      document.body.style.backgroundColor = '';
     };
   }, [location.pathname]);
 
@@ -44,10 +45,10 @@ function App() {
               key={index}
               path={item.path}
               element={
-                decodedToken.Role === 'Admin' ? (
+                decodedToken.Role === 'Admin' && token ? (
                   item.element
                 ) : (
-                  <Navigate to="/create" />
+                  <Navigate to="/" />
                 )
               }
             />
