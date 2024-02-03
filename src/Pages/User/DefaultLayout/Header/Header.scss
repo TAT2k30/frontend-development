@@ -85,6 +85,11 @@
   border-radius: 50%;
   margin-right: 10px;
 
+  &:hover {
+    filter: brightness(1.2); 
+    cursor: pointer; 
+  }
+
   @media (max-width: 768px) {
     margin-right: 0;
     margin-bottom: 10px;
@@ -101,7 +106,7 @@
 }
 
 .btn {
-  background-color: #564b49;
+  background-color: #6d6867;
   color: #EC4D37;
   padding: 8px 16px;
   border-radius: 5px;

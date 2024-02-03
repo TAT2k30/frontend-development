@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../../../../Assets/Data/DataContext";
 import "./Header.scss";
 import SearchBar from "../../SearchBar/SearchBar";
-import { faSignInAlt, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt, faUserPlus, faBell, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import imageLogo from "../../../../Assets/Image/Logo/logo-png.png";
 
@@ -14,7 +14,7 @@ function Header() {
     <div className="header-container">
       <div className="left-links">
         <Link to="/">
-          <img src={imageLogo} alt="Logo" width={60} style={{borderRadius: 10}}/>
+          <img src={imageLogo} alt="Logo" width={60} style={{ borderRadius: 10 }} />
         </Link>
         <Link to="/create">Create</Link>
       </div>
@@ -24,20 +24,24 @@ function Header() {
       <div className="right-info">
         {token ? (
           <div>
-            <span>Welcome, {token.UserName}</span>
+            <FontAwesomeIcon icon={faBell} size='lg' />
             <img
               src={token.AvatarUrl}
               width={50}
               className="imgAvatar"
               alt="User Avatar"
+              onClick={()=>{
+                
+              }}
             />
+
             <button
               onClick={() => {
                 logout(token.Email);
               }}
-              className="btn btn-warning"
+              className="btn btn-danger"
             >
-              Logout
+              <FontAwesomeIcon icon={faRightFromBracket} />
             </button>
           </div>
         ) : (
