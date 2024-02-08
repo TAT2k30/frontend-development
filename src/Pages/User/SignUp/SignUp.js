@@ -36,20 +36,41 @@ function SignUp() {
     onSubmit: async (values) => {
       setError(null);
       setLoading(true);
+      const formData = new FormData();
+      formData.append("email", values.email);
+      formData.append("gender", values.gender);
+      formData.append("dateOfBirth", values.dateOfBirth);
+      formData.append("userName", values.userName);
+      formData.append("password", values.password);
 
       try {
         const response = await axios.post(
           `${baseUrl}/Auth/register`,
-          values
+          formData
         );
-        const tokenString = response.data.token;
-        console.log("Undecoded token: ", tokenString);
-        login(tokenString);
+        console.log(response.data);
+        if (response.data.status === 200) {
+          const submitLogin = {
+            email: values.email,
+            password: values.password
+          };
+          const response = await axios.post(
+            `${baseUrl}/Auth/login`,
+            submitLogin
+          );
+          if (response.status === 200) {
+            const tokenString = response.data.token;
+            login(tokenString);
+          }
+          setError("Something wrong!! Try it later.");
+        } else {
+          setError("User registration failed");
+        }
       } catch (error) {
         console.log(error);
         if (error.response) {
-          if (error.response.status === 404) {
-            setError("Invalid credentials");
+          if (error.response.status === 409) {
+            setError("Email already taken");
           } else {
             setError("An error occurred while processing your request");
           }
@@ -68,11 +89,10 @@ function SignUp() {
         <div className="registration-container">
           <form onSubmit={formik.handleSubmit}>
             {error && (
-              <div className="alert" role="alert">
+              <div className="alert alert-danger" role="alert">
                 {error}
               </div>
             )}
-
             <div className="mb-3 mt-3">
               <label htmlFor="email" className="form-label">
                 <b>Email:</b>
@@ -122,8 +142,8 @@ function SignUp() {
               <input
                 type="date"
                 className={`form-control ${formik.touched.dateOfBirth && formik.errors.dateOfBirth
-                    ? "is-invalid"
-                    : ""
+                  ? "is-invalid"
+                  : ""
                   }`}
                 id="dateOfBirth"
                 name="dateOfBirth"
@@ -143,8 +163,8 @@ function SignUp() {
               <input
                 type="text"
                 className={`form-control ${formik.touched.userName && formik.errors.userName
-                    ? "is-invalid"
-                    : ""
+                  ? "is-invalid"
+                  : ""
                   }`}
                 id="userName"
                 placeholder="Enter username"
@@ -165,8 +185,8 @@ function SignUp() {
               <input
                 type="password"
                 className={`form-control ${formik.touched.password && formik.errors.password
-                    ? "is-invalid"
-                    : ""
+                  ? "is-invalid"
+                  : ""
                   }`}
                 id="password"
                 placeholder="Enter password"

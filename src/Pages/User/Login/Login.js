@@ -4,6 +4,7 @@ import { DataContext } from "../../../Assets/Data/DataContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./Login.scss";
+import { baseUrl } from "../../../Assets/Data/baseUrl";
 
 function Login(props) {
 
@@ -31,11 +32,11 @@ function Login(props) {
 
       try {
         const response = await axios.post(
-          "http://localhost:5085/api/Auth/login",
+          `${baseUrl}/Auth/login`,
           values
         );
         const tokenString = response.data.token;
-        console.log("Undecoded token: ", tokenString);
+        console.log("Response : ", response)
         login(tokenString);
       } catch (error) {
         console.log(error);
@@ -58,14 +59,12 @@ function Login(props) {
     <div className="login-form">
       <div className="checkout-section">
         <div className="checkout-heading">Previous Logins</div>
-        {/* Display previous logins as cards */}
-        {/* Example card */}
+ 
         <div className="checkout-card">
           <p>Email: example@email.com</p>
           <p>Last Login: 2022-02-02 10:30 AM</p>
         </div>
 
-        {/* Add more cards dynamically based on previous logins */}
       </div>
 
       <div className="login-container">

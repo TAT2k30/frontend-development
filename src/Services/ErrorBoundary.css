@@ -1,0 +1,28 @@
+.error-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .error-list {
+    margin-top: 20px;
+  }
+  
+  .error-list h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .error-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .error-list li {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
+  .error-list li:last-child {
+    margin-bottom: 0;
+  }
+  

@@ -1,6 +1,8 @@
-// In UserDetail component
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap'; // Import các thành phần từ Bootstrap
+import "./UserDetail.scss";
+import { DataContext } from '../../../Assets/Data/DataContext';
 
 function UserDetail() {
   const tokenLocal = localStorage.getItem("token");
@@ -13,9 +15,23 @@ function UserDetail() {
     }
   }, [tokenLocal]);
 
+  const { token } = useContext(DataContext);
+
   return (
-    <div>
-      This is user Detail
+    <div className='userDetail-form'>
+      <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>User Detail</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">ID: {token.id}</Card.Subtitle>
+          <Card.Text>
+            Username: {token.UserName} <br />
+            Email: {token.Email} <br />
+            Gender: {token.Gender ? "Male" : "Female"} <br />
+            Date of Birth: {token.DateOfBirth}
+          </Card.Text>
+          <Button variant="primary">Edit Profile</Button>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
