@@ -36,7 +36,6 @@ function Login(props) {
           values
         );
         const tokenString = response.data.token;
-        console.log("Response : ", response)
         login(tokenString);
       } catch (error) {
         console.log(error);
