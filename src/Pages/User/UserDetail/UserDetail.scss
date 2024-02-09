@@ -8,23 +8,14 @@
 
 .user-detail-container {
   display: flex;
-  width: 98%;
-}
-
-.left-side {
-  flex: 2;
-  max-height: calc(100vh - 100px); 
-  overflow-y: auto; 
-}
-
-.right-side {
-  flex: 7; /* Chiếm 70% */
-  background-color: #fff;
-  margin-left: 10px; /* Khoảng cách 10px */
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80vh; 
 }
 
 .user-detail-card {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   text-align: center;
   background-color: #242526;

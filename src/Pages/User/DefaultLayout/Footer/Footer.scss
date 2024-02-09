@@ -1,10 +1,33 @@
-// Footer.scss
-
 .footer-container {
-  background-color: #333;
+  background-color: #242526;
   color: #fff;
   padding: 20px;
   text-align: center;
   bottom: 0;
   width: 100%;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links span {
+  font-size: 14px;
+}
+
+.footer-links b {
+  margin-right: 10px;
+}
+
+.footer-links a {
+  color: #fff; /* Màu mặc định cho liên kết */
+  transition: color 0.3s; /* Hiệu ứng chuyển đổi màu trong 0.3 giây */
+}
+
+.footer-links a:hover {
+  color: #ffcd00; /* Màu khi hover */
+}
+
+.social-media {
+  font-size: 16px;
 }

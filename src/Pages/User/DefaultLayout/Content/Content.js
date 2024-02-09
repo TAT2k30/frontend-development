@@ -10,8 +10,6 @@ function Content() {
 
   useEffect(() => {
     const customData = location.state;
-    console.log(customData);
-
     if (customData) {
       const { message, type } = customData;
 

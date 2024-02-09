@@ -5,6 +5,7 @@ import Content from "../Pages/User/DefaultLayout/Content/Content";
 import Login from "../Pages/User/Login/Login";
 import SignUp from "../Pages/User/SignUp/SignUp";
 import UserDetail from "../Pages/User/UserDetail/UserDetail";
+import Create from "../Pages/User/Create/Create";
 
 
 
@@ -24,6 +25,10 @@ const publicRouter = [
     {
         path: "/",
         element: <Content/>
+    },
+    {
+        path: "/uploads",
+        element: <Create/>
     }
 ]
 
@@ -50,7 +55,9 @@ const AdminPath = {
 const UserPath = {
     MainLayout : "/",
     Login : "/login",
-    SignUp : "Signup"
+    SignUp : "/signup",
+    Upload : "/uploads",
+    Detail : "/detail"
 }
 export {
     publicRouter,

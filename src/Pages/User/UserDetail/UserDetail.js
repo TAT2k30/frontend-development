@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap'; 
+import { Button, Card } from 'react-bootstrap';
 import "./UserDetail.scss";
 import { DataContext } from '../../../Assets/Data/DataContext';
 import axios from 'axios';
@@ -39,27 +39,26 @@ function UserDetail() {
         <p>Loading...</p>
       ) : userDetail ? (
         <div className="user-detail-container">
-          <div className="left-side">
-            <Card className="user-detail-card">
-              <Card.Img variant="top" src={userDetail.avatarUrl} className="user-avatar" />
-              <Card.Body>
-                <Card.Title>User Detail</Card.Title>
-                <Card.Text>
-                  <strong>ID:</strong> {userDetail.id} <br />
-                  <strong>Username:</strong> {userDetail.userName} <br />
-                  <strong>Email:</strong> {userDetail.email} <br />
-                  <strong>Gender:</strong> {userDetail.gender ? "Male" : "Female"} <br />
-                </Card.Text>
-                <Button variant="primary">Edit Profile</Button>
-              </Card.Body>
-            </Card>
-          </div>
-          <div className="right-side">
-            <h3>ákjdhakd</h3>
-          </div>
+          <Card className="user-detail-card">
+            <Card.Img variant="top" src={userDetail.avatarUrl} className="user-avatar" />
+            <Card.Body>
+              <Card.Title>User Detail</Card.Title>
+              <Card.Text>
+                <strong>ID:</strong> {userDetail.id} <br />
+                <strong>Username:</strong> {userDetail.userName} <br />
+                <strong>Email:</strong> {userDetail.email} <br />
+                <strong>Gender:</strong> {userDetail.gender ? "Male" : "Female"} <br />
+              </Card.Text>
+              <Button variant="primary">Edit Profile</Button>
+              
+            </Card.Body>
+          </Card>
         </div>
-      ) : (
-        <p>Error loading user detail.</p>
+      ) : ( 
+        <>
+          <p>Error loading user detail.</p>
+          <button onClick={() => { localStorage.removeItem("token"); }}>Click me</button>
+        </>
       )}
     </div>
   );

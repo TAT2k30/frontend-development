@@ -7,6 +7,7 @@ import SearchBar from "../../SearchBar/SearchBar";
 import { faSignInAlt, faUserPlus, faBell, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import imageLogo from "../../../../Assets/Image/Logo/logo-png.png";
+import { UserPath } from "../../../../Routes/routerList";
 
 function Header() {
   const { token, logout } = useContext(DataContext);
@@ -14,10 +15,10 @@ function Header() {
   return (
     <div className="header-container">
       <div className="left-links">
-        <Link to="/">
+        <Link to={UserPath.MainLayout}>
           <img src={imageLogo} alt="Logo" width={60} style={{ borderRadius: 10 }} />
         </Link>
-        <Link to="/create">Create</Link>
+        <Link to={UserPath.Upload}>Create</Link>
       </div>
       <div className="search-container">
         <SearchBar />
@@ -34,7 +35,7 @@ function Header() {
               alt="User Detail"
               style={{marginLeft : 10}}
               onClick={() => {
-                navigate("/detail")
+                navigate(UserPath.Detail)
               }}
             />
             <button
