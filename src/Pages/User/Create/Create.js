@@ -27,7 +27,7 @@ function Create(props) {
     };
 
     fetchUserImages();
-  },[userImgUrl]);
+  },[]);
 
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
