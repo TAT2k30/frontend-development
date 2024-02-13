@@ -4,7 +4,7 @@ import axios from 'axios';
 import { DataContext } from '../../../Assets/Data/DataContext';
 import { baseUrl } from '../../../Assets/Data/baseUrl';
 import imgUpload from '../../../../src/Assets/Image/UploadImgIcn-removebg-preview.png';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Create(props) {
@@ -27,7 +27,7 @@ function Create(props) {
     };
 
     fetchUserImages();
-  },[]);
+  },[userImgUrl]);
 
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
@@ -42,22 +42,25 @@ function Create(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!files.length) {
       alert('Please select at least one image file.');
       return;
     }
-
+  
     const formData = new FormData();
-
+  
     for (let i = 0; i < files.length; i++) {
       formData.append('files', files[i]);
+      if (!fileNames[i]) {
+        formData.append('fileNames', files[i].name); 
+      } else {
+        formData.append('fileNames', fileNames[i]);
+      }
     }
-
-    formData.append('fileNames', JSON.stringify(fileNames));
-
+  
     formData.append('userID', token ? token.UserId : 0);
-
+  
     try {
       // for (const [key, value] of formData.entries()) {
       //   console.log(`Field name: ${key}`);
@@ -65,7 +68,6 @@ function Create(props) {
       //     console.log(value);
       //   } else {
       //     console.log(`Field value: ${value}`);
-
       //   }
       // }
       
@@ -75,14 +77,13 @@ function Create(props) {
         },
       });
       console.log('Response from server:', response.data);
-      setUserImgUrl([...userImgUrl, ...response.data.data.$values]);
-
+      setFiles([]);
       alert('Images uploaded successfully.');
     } catch (error) {
       console.error('Error uploading images:', error);
       alert('Error uploading images. Please try again.');
     }
-};
+  };
 
 
   const handleDeleteImage = async (index) => {
@@ -192,15 +193,13 @@ function Create(props) {
          <div className="user-img-item" key={index}>
          {imgUrl && imgUrl.imageUrl && <img src={imgUrl.imageUrl} alt={`User Image ${index}`} title={imgUrl.title} />}
          <button className="delete-btn" onClick={() => handleDeleteImage(index)}>
-           Delete
+           <FontAwesomeIcon icon={faDeleteLeft} size='2x'/>
          </button>
        </div>
        
         ))}
       </div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="file-input">Select Image(s): </label>
-        <input id="file-input" type="file" multiple onChange={handleFileChange} style={{ display: 'none' }} />
         <button type="submit">Upload</button>
       </form>
     </div>
