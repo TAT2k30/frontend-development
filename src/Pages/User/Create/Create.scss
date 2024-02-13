@@ -138,6 +138,7 @@
     width: 200px;
     height: 200px;
     border-radius: 5px;
+    margin-left: 8px;
   }
   img:hover::after {
     content: attr(title);
@@ -156,11 +157,11 @@
 
 .delete-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -6px;
+  right: -10px;
   background-color: transparent;
   border: none;
-  color: #ff6b6b;
+  color: #b0969670;
   cursor: pointer;
   transition: color 0.3s ease;
 }
