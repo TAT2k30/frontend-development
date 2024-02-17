@@ -3,10 +3,10 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "../../../Assets/Data/DataContext";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "./Login.scss";
+import "./UserLogin.scss";
 import { baseUrl } from "../../../Assets/Data/baseUrl";
 
-function Login(props) {
+function UserLogin(props) {
 
   const { login } = useContext(DataContext);
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ function Login(props) {
   });
 
   return (
-    <div className="login-form">
+    <div className="user-login-form">
       <div className="checkout-section">
         <div className="checkout-heading">Previous Logins</div>
  
@@ -76,9 +76,9 @@ function Login(props) {
               </div>
             )}
             <div className="mb-3 mt-3">
-              <label htmlFor="email" className="form-label">
+             
                 <b>Email:</b>
-              </label>
+             
               <input
                 type="text"
                 className={`form-control ${
@@ -98,9 +98,9 @@ function Login(props) {
               )}
             </div>
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
+              
                 <b>Password:</b>
-              </label>
+              
               <input
                 type="password"
                 className={`form-control ${
@@ -143,4 +143,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default UserLogin;

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './Content.scss';
+import './UserContent.scss';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
-function Content() {
+function UserContent() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,10 +21,10 @@ function Content() {
   }, [location.state, navigate]);
 
   return (
-    <div className='content-form'>
+    <div className='user-content-form'>
       <NotificationContainer />
     </div>
   );
 }
 
-export default Content;
+export default UserContent;

@@ -1,4 +1,4 @@
-.search-bar-container {
+.user-search-bar-container {
     display: flex;
     align-items: center;
     margin-right: 10px;
@@ -19,17 +19,20 @@
       }
     }
   
-    button {
+    .user-search-icon {
+      
+      width: 10%;
       padding: 10px 15px;
       font-size: 16px;
-      background-color: #e1796c;
+      background-color: #858484;
       color: white;
-      border: none;
       border-radius: 4px;
-      cursor: pointer;
-  
+      
+      
       &:hover {
-        background-color: darken(#f16653, 10%);
+        background-color: #EC4D37;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
       }
     }
   
@@ -41,9 +44,7 @@
         margin-right: 0;
       }
   
-      button {
-        margin-right: 0;
-      }
+    
     }
   }
   

@@ -1,7 +1,7 @@
 import React from 'react';
-import './Footer.scss';
+import './UserFooter.scss';
 
-function Footer(props) {
+function UserFooter(props) {
     return (
         <div className="footer-container">
             <div className="footer-links">
@@ -16,4 +16,4 @@ function Footer(props) {
     );
 }
 
-export default Footer;
+export default UserFooter;

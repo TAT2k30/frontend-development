@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import './Create.scss';
+import './UserCreateImage.scss';
 import axios from 'axios';
 import { DataContext } from '../../../Assets/Data/DataContext';
 import { baseUrl } from '../../../Assets/Data/baseUrl';
@@ -7,7 +7,7 @@ import imgUpload from '../../../../src/Assets/Image/UploadImgIcn-removebg-previe
 import { faXmark, faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Create(props) {
+function UserCreateImage(props) {
   const [userImgUrl, setUserImgUrl] = useState([]);
   const [files, setFiles] = useState([]);
   const [fileNames, setFileNames] = useState([]);
@@ -207,4 +207,4 @@ function Create(props) {
 
 }
 
-export default Create;
+export default UserCreateImage;

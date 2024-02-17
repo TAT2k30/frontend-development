@@ -174,18 +174,4 @@ input[type="file"] {
   display: none;
 }
 
-label,
-button[type="submit"] {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-label:hover,
-button[type="submit"]:hover {
-  background-color: #388e3c;
-}

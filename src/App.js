@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { privateRouter, publicRouter } from './Routes/routerList';
 import { jwtDecode } from 'jwt-decode';
-import HeaderAdmin from './Pages/Admin/DefaultLayout/Header/HeaderAdmin';
-import Header from './Pages/User/DefaultLayout/Header/Header';
-import Footer from './Pages/User/DefaultLayout/Footer/Footer';
+import HeaderAdmin from './Pages/Admin/DefaultLayout/Header/AdminHeader';
+import Header from './Pages/User/DefaultLayout/Header/UserHeader';
+import Footer from './Pages/User/DefaultLayout/Footer/UserFooter';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -26,7 +26,7 @@ function App() {
     } else {
       document.body.style.background = ''; 
     }
-
+   
     return () => {
       document.body.style.backgroundColor = '';
     };
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div>
-      {!isAdmin && <Header />}
+     
       <Routes>
         {publicRouter.map((item, index) => (
           <Route key={index} path={item.path} element={item.element} />
@@ -55,7 +55,7 @@ function App() {
           ))
         ) : null}
       </Routes>
-      {!isAdmin && <Footer />}
+    
     </div>
   );
 }

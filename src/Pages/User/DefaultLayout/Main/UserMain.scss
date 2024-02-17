@@ -1,0 +1,26 @@
+.user-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    
+    .user-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000; 
+    }
+
+    .user-main-content {
+        flex: 1; 
+        overflow-y: auto;
+        padding-top: 65px; 
+    }
+
+    .user-footer {
+        flex: 0; 
+        position: relative;
+        bottom: 0; 
+        width: 100%; 
+    }
+    
+}

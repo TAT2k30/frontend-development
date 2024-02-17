@@ -1,12 +1,13 @@
 /* Header.scss */
-.header-container {
-  background-color: #3498db;
+.admin-header-container {
   color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 65px;
+  border-bottom-left-radius: 8px;
+  background-color: #333;
 }
 
 .left-links {
@@ -22,7 +23,12 @@
     }
   }
 }
-
+.logo-center{
+  justify-content: space-between;
+  img{
+    border-radius: 10px;
+  }
+}
 .right-info {
   display: flex;
   align-items: center;
@@ -52,8 +58,6 @@
         position: absolute;
         top: 100%;
         right: 0;
-
-        // Custom class for leftward shift
         &.leftward-shift {
           left: 0;
           transform: translateX(-100%);

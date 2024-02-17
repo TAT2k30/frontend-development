@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../../../../Assets/Data/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../../../../Assets/Image/Logo/logo-png.png"
+import "./AdminHeader.scss";
 
-import "./Header.scss";
-
-function HeaderAdmin() {
+function AdminHeader() {
   const { token, logout } = useContext(DataContext);
 
   return (
-    <div className="header-container">
+    <div className="admin-header-container">
       <div className="left-links">
         <Link to="/">Home</Link>
         <Link to="/create">Create</Link>
+      </div>
+      <div className="logo-center">
+        <img src={Logo} width={70} />
       </div>
       <div className="right-info">
         {token ? (
@@ -47,4 +50,4 @@ function HeaderAdmin() {
   );
 }
 
-export default HeaderAdmin;
+export default AdminHeader;

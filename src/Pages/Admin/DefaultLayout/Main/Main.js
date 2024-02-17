@@ -1,34 +1,51 @@
-// Main.jsx
-import React, { useState } from 'react';
-import HeaderAdmin from '../Header/HeaderAdmin';
+import React, { useEffect, useState } from 'react';
+import HeaderAdmin from '../Header/AdminHeader';
 import SideBar from '../SideBar/SideBar';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Main.scss';
+import DataAnalytic from '../../DataAnalytic/DataAnalytic';
 import ListUser from '../../List/ListUser';
 import { auto } from '@popperjs/core';
+import ImageSize from '../../Image/Size/ImageSize';
 
 function Main(props) {
     const [sidebarVisible, setSidebarVisible] = useState(true);
+    const [content, setContent] = useState();
+    const location = useLocation();
 
     const toggleSidebar = () => {
         setSidebarVisible(!sidebarVisible);
     };
-    return (
 
+    useEffect(() => {
+        switch(location.pathname) {
+            case '/admin_dashboard/user':
+                setContent(<ListUser/>);
+                break;
+            case '/admin_dashboard/product':
+                setContent('Product content');
+                break;
+            case '/admin_dashboard/image/size':
+                setContent(<ImageSize/>);
+                break;
+            default:
+                setContent(<DataAnalytic/>);
+        }
+    }, [location.pathname]);
+
+    return (
         <div className="dashboard-container">
             {sidebarVisible && <SideBar/>}
-           <button style={{height : 40, margin: auto}} onClick={()=>{toggleSidebar()}}>Ra</button>
+            <button style={{height : 40, margin: 'auto'}} onClick={toggleSidebar}>Ra</button>
             <div className="content-wrapper">
-            
                 <div className="main-content">
-                <HeaderAdmin/>
+                    <HeaderAdmin/>
                     <div className="dashboard-links">
-                        <Link to="/admin/dashboard">Dashboard</Link>
-                        <Link to="/admin/users">Users</Link>
-                        <Link to="/admin/products">Products</Link>
+                        {/* Links */}
                     </div>
                     <div className="dashboard-widgets">
-                        <ListUser/>
+                        {/* Render content */}
+                        {content}
                     </div>
                 </div>
             </div>

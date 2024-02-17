@@ -68,7 +68,7 @@ function DataProvider({ children }) {
     const getAllAccounts = async () => {
         try {
             const response = await axios.get(`${baseUrl}/User`);
-            setUserList(response.data.data);
+            setUserList(response.data.data.$values);
         } catch (error) {
             console.log("Error: ", error);
         }

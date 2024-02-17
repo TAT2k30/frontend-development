@@ -1,56 +1,49 @@
-import CreatePage from "../Pages/Admin/Create/CreatePage";
-import ListUser from "../Pages/Admin/List/ListUser";
+
 import Main from "../Pages/Admin/DefaultLayout/Main/Main";
-import Content from "../Pages/User/DefaultLayout/Content/Content";
-import Login from "../Pages/User/Login/Login";
-import SignUp from "../Pages/User/SignUp/SignUp";
-import UserDetail from "../Pages/User/UserDetail/UserDetail";
-import Create from "../Pages/User/Create/Create";
-
-
-
+import MainUser from "../Pages/User/DefaultLayout/Main/UserMain";
+//Route giành cho cả admin và user
 const publicRouter = [
     {
         path: "/detail",
-        element: <UserDetail/>
+        element: <MainUser/>
     },
     {
         path: '/login',
-        element: <Login />
+        element: <MainUser />
     },
     {
         path: "/signup",
-        element: <SignUp />
+        element: <MainUser />
     },
     {
         path: "/",
-        element: <Content/>
+        element: <MainUser/>
     },
     {
         path: "/uploads",
-        element: <Create/>
+        element: <MainUser/>
     }
 ]
-
+//Route chỉ giành cho Admin
 const privateRouter = [
     {
-        path: '/list',
-        element: <ListUser />
+        path: '/admin_dashboard',
+        element: <Main/>
     },
     {
-        path: '/create',
-        element: <CreatePage />
+        path: '/admin_dashboard/user',
+        element: <Main/>
     },
     {
-        path: '/admin_dasboard',
+        path: '/admin_dashboard/image/size',
         element: <Main/>
     }
 ]
 
 const AdminPath = {
-    UserList : "/admin_dasboard/UserList",
-    UserCreate : "/admin_dasboard/UserCreate",
-    MainLayout : "/admin_dasboard"
+    UserList : "/admin_dashboard/user",
+    MainLayout : "/admin_dashboard",
+    ImageSize : "/admin_dashboard/image/size"
 }
 const UserPath = {
     MainLayout : "/",

@@ -5,9 +5,9 @@ import * as Yup from "yup";
 import axios from "axios";
 import { baseUrl } from "../../../Assets/Data/baseUrl";
 
-import "./SignUp.scss";
+import "./UserSignUp.scss";
 
-function SignUp() {
+function UserSignUp() {
   const { login } = useContext(DataContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -85,7 +85,7 @@ function SignUp() {
 
   return (
     <div className="signup-background">
-      <div className="signup-form">
+      <div className="user-signup-form">
         <div className="registration-container">
           <form onSubmit={formik.handleSubmit}>
             {error && (
@@ -220,4 +220,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default UserSignUp;

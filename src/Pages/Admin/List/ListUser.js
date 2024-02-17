@@ -21,13 +21,14 @@ function ListUser(props) {
     }
   };
   const IsUserOnline = (time) => {
+    if (!time) return ''; // Kiểm tra nếu time là null hoặc không tồn tại, trả về chuỗi rỗng
     const lastLoginTime = new Date(time.replace(/(\d{2})\/(\d{2})\/(\d{2})/, "20$3-$1-$2"));
     const currentTime = new Date();
     const timeDifference = currentTime - lastLoginTime;
     const minutesDifference = Math.floor(timeDifference / (1000 * 60));
     const hours = Math.floor(minutesDifference / 60);
     const minutes = minutesDifference % 60;
-
+  
     if (hours > 0) {
       return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
     } else if (minutes === 0) {
@@ -36,6 +37,7 @@ function ListUser(props) {
       return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} ago`;
     }
   };
+  
   useEffect(() => {
     getAllAccounts();
    

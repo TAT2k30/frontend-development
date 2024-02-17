@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './SearchBar.scss';
+import './UserSearchBar.scss';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-function SearchBar(props) {
+function UserSearchBar(props) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {
@@ -10,7 +10,7 @@ function SearchBar(props) {
   };
 
   return (
-    <div className="search-bar-container">
+    <div className="user-search-bar-container">
       <input
         type="text"
         placeholder="Search..."
@@ -18,9 +18,9 @@ function SearchBar(props) {
         onChange={(e) => setSearchTerm(e.target.value)}
         style={{width: 400}}
       />
-      <button onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+      <FontAwesomeIcon onClick={handleSearch} icon={faMagnifyingGlass} className='user-search-icon'/>
     </div>
   );
 }
 
-export default SearchBar;
+export default UserSearchBar;

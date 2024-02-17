@@ -1,57 +1,68 @@
 // Main.scss
 .toggle-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: #2980b9;
-    }
+  &:hover {
+    background-color: #2980b9;
+  }
 }
 
 .dashboard-container {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 100vh;
+  background-color: #248cd27d;
 }
 
 .content-wrapper {
-    display: flex;
-    flex: 1;
-    overflow-x: auto;
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
 }
 
 .main-content {
-    flex: 1;
-    padding: 10px;
-    height: 100%;
+  flex: 1;
+
+  height: 100%;
 }
 
 .dashboard-links {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .dashboard-links a {
-    text-decoration: none;
-    color: #3498db;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #ecf0f1;
-    transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: #3498db;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ecf0f1;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: #bdc3c7;
-    }
+  &:hover {
+    background-color: #bdc3c7;
+  }
 }
 
 .dashboard-widgets {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  background-color: #f8f2f2;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.content-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.content-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
