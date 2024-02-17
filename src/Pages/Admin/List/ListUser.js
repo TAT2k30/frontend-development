@@ -132,7 +132,7 @@ function ListUser(props) {
             </tbody>
             </table>
         ) : (
-          <span>There is no data</span>
+          <span>Loading data...</span>
         )}
       </div>
     </div>

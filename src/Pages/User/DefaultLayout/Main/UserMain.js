@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './UserMain.scss';
 import { useLocation } from 'react-router-dom';
 import Header from '../Header/UserHeader';
@@ -12,8 +12,13 @@ import Create from '../../Create/UserCreateImage';
 
 function UserMain(props) {
     const [content, setContent] = useState(null);
-    const [showShadow, setShowShadow] = useState(false); 
+    const [showShadow, setShowShadow] = useState(window.scrollY > 0);
     const location = useLocation();
+
+    const handleNavigation = useCallback(() => {
+        setShowShadow(window.scrollY > 0);
+        console.log(showShadow);
+    }, []);
 
     useEffect(() => {
         switch (location.pathname) {
@@ -37,27 +42,16 @@ function UserMain(props) {
         }
     }, [location.pathname]);
 
-   
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 10) { 
-                setShowShadow(true);
-            } else {
-                setShowShadow(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleNavigation);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener("scroll", handleNavigation);
         };
-    }, []);
+    }, [handleNavigation]);
 
     return (
-<div className={`user-container`} style={showShadow ? { boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" } : {}}>
-
-            <div className='user-header'>
+        <div className={`user-container`}>
+            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)'} : {}} >
                 <Header />
             </div>
             <div className='user-main-content'>

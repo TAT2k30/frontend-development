@@ -28,8 +28,8 @@ function UserHeader() {
         <Link to={UserPath.MainLayout}>
           <img src={imageLogo} alt="Logo" width={60} style={{ borderRadius: 10 }} />
         </Link>
-        <Link to={UserPath.MainLayout} style={routeCheckout === "main" ? {backgroundColor: "#918e8e62", padding: 10, borderRadius: 20} : {}}><b>Home</b></Link>
-        <Link to={UserPath.Upload} style={routeCheckout === "upload" ? {backgroundColor: "#918e8e62", padding: 10, borderRadius: 20} : {}}><b>Create</b></Link>
+        <Link to={UserPath.MainLayout} style={routeCheckout === "main" ? {backgroundColor: "#918e8e62", padding: 10, borderRadius: 20, color : "#EC4D37"} : {}}><b>Home</b></Link>
+        <Link to={UserPath.Upload} style={routeCheckout === "upload" ? {backgroundColor: "#918e8e62", padding: 10, borderRadius: 20, color : "#EC4D37"} : {}}><b>Create</b></Link>
       </div>
       <div className="user-search-container">
         <SearchBar />
@@ -39,6 +39,7 @@ function UserHeader() {
           <>
             <FontAwesomeIcon icon={faBell} size='2x' className="bell-icon" />
             <div className="hummm">
+              
               <img
                 src={token.AvatarUrl}
                 width={50}
