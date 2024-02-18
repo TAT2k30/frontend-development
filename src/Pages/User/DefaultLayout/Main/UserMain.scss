@@ -4,8 +4,9 @@
     min-height: 100vh; 
     
     .user-header {
-        background-color: #ececec93;
+        background-color: #f1c6c600;
         transition: box-shadow 0.3s ease;
+        transition: background-color 0.3s ease;
         position: fixed;
         top: 0;
         width: 100%;
@@ -16,14 +17,14 @@
         background-color: #ececec93;
         flex: 1; 
         overflow-y: auto;
-        padding-top: 65px; 
+ 
     }
 
     .user-footer {
         flex: 0; 
-        position: relative;
+        
         bottom: 0; 
-        width: 100%; 
+       
     }
   
     

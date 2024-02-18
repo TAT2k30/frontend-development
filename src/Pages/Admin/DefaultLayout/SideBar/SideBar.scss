@@ -1,28 +1,31 @@
-// SideBar.scss
 .sidebar {
-    width: 200px;
+    width: 200px; 
     background-color: #1D1B1B;
     color: #1D1B1B;
     padding: 20px;
+    margin: 0;
+    white-space: nowrap;
+    transition: width 0.2s ease, opacity 0.3s ease; // Thêm opacity vào transition
+    margin-right: 22px;
     a {
-        display: block;
-        margin-bottom: 10px;
-        text-decoration: none;
-        color: #ED4D37;
-        font-weight: bold;
-
-        &:hover {
-            color: #e1796c;
-        }
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #ED4D37;
+      font-weight: bold;
+  
+      &:hover {
+        color: #e1796c;
+      }
     }
-}
-
-.sidebar-expanded {
-    margin-left: 0; /* Change to the desired value when expanded */
-    transition: margin-left 0.3s ease;
-}
-
-.sidebar-collapsed {
-    margin-left: -200px; /* Change to the negative width of the sidebar when collapsed */
-    transition: margin-left 0.3s ease;
-}
+  }
+  
+  .sidebar.collapsed {
+  
+    transition: width 0.2s ease, opacity 0.1s ease; // Thêm opacity vào transition
+    width: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+  }
+  

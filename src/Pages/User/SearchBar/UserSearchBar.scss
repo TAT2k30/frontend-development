@@ -2,16 +2,16 @@
     display: flex;
     align-items: center;
     margin-right: 10px;
-  
+
     input {
       padding: 10px;
       font-size: 16px;
       border: 1px solid #1D1B1B;
-      border-radius: 4px;
+      border-radius: 20px;
       margin-right: 5px;
-      background-color: #fff;
+      background-color: #ffffff69;
       color: #1D1B1B;
-  
+      
       &:focus {
         outline: none;
         border-color: #EC4D37;
@@ -24,13 +24,13 @@
       width: 10%;
       padding: 10px 15px;
       font-size: 16px;
-      background-color: #858484;
+      background-color: #858484b5;
       color: white;
       border-radius: 4px;
       
       
       &:hover {
-        background-color: #EC4D37;
+        background-color: #ec4c37b5;
         transition: background-color 0.3s ease;
         cursor: pointer;
       }

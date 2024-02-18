@@ -3,8 +3,9 @@
   background-color: #3498db;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  border-radius: 50%; /* Làm cho nút có hình dạng hình tròn */
+  height: 50px;
+  width: 50px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -13,16 +14,24 @@
   }
 }
 
+.toggle-icon {
+  width: 30px; 
+  height: 20px;
+}
+
 .dashboard-container {
+  
   display: flex;
   height: 100vh;
   background-color: #248cd27d;
 }
 
 .content-wrapper {
-  display: flex;
-  flex: 1;
-  overflow-x: auto;
+  margin-left: 5px;
+  flex: 1; 
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: calc(100% - 200px);
 }
 
 .main-content {

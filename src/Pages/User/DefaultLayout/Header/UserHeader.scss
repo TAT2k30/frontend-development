@@ -1,12 +1,12 @@
 .user-header-container {
-  background-color: #ececec93;
+  background-color:  #f5c3a200;
   color: #858484;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 65px;
-
+  
 }
 
 @media (max-width: 768px) {
@@ -28,7 +28,6 @@
     color: #858484;
     font-size: 16px;
     transition: color 0.3s ease;
-
     &:hover {
       color: #EC4D37;
     }

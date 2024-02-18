@@ -51,7 +51,7 @@ function UserMain(props) {
 
     return (
         <div className={`user-container`}>
-            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)'} : {}} >
+            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)', 'backgroundColor': '#eed9cbe3'} : {}} >
                 <Header />
             </div>
             <div className='user-main-content'>

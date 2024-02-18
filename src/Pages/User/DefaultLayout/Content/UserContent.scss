@@ -1,4 +1,109 @@
-.user-content-form{
-    height: 100vh;
-    background-color: #ececec93;
+@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
+.user-content-form {
+  height: 100%;
+  background-color: #eed9cb;
+  overflow: hidden;
 }
+
+.video-full-height {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.divider {
+  display: flex;
+      z-index: 1;
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(29, 29, 29, 0.677);
+  }
+}
+@keyframes moveLeftToRight {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+.donotcross {
+  overflow: hidden;
+  align-items: center;
+  background: hsl(10, 100%, 72%);
+  color: black;
+  height: 2em;
+  line-height: 2em;
+  flex: 1;
+  position: relative;
+
+  .checkout-text {
+    font-family: "Protest Riot", sans-serif;
+    color: #000000c5;
+    font-weight: bolder;
+    font-size: xx-large;
+    position: absolute;
+    white-space: nowrap;
+    animation: moveLeftToRight 15s linear infinite;
+  }
+
+  &:before,
+  &:after {
+    background: #eed9cb;
+    padding: 50px 0;
+    height: 0;
+    transform: rotate(45deg);
+  }
+}
+
+.category-checkout {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+
+  .checkout-line {
+    display: flex;
+    align-items: center;
+
+    .calendar,
+    .print,
+    .canva,
+    .homeDecor,
+    .photoBook {
+      margin: 10px;
+      .Checkout-img-container {
+        background-color: #ffffff;
+        border-radius: 50%;
+        flex-direction: column;
+        box-shadow: 0 0 5px rgba(113, 97, 97, 0.2);
+      }
+
+      img {
+        width: 100px;
+        padding: 10px;
+        margin: 10px;
+        transition: 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: 0.3s ease;
+          cursor: pointer;
+        }
+      }
+
+      .text-checkout-img {
+        font-family: "Protest Riot", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+      }
+    }
+  }
+}
+
