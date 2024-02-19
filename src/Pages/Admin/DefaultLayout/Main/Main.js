@@ -25,7 +25,7 @@ function Main(props) {
             case '/admin_dashboard/product':
                 setContent('Product content');
                 break;
-            case '/admin_dashboard/image/size':
+            case '/admin_dashboard/image':
                 setContent(<ImageSize />);
                 break;
             default:
@@ -40,10 +40,10 @@ function Main(props) {
                 <div className="main-content">
                 <HeaderAdmin toggleSidebar={toggleSidebar} />
                     <div className="dashboard-links">
-                        {/* Links */}
+                      
                     </div>
                     <div className="dashboard-widgets">
-                        {/* Render content */}
+                    
                         {content}
                     </div>
                 </div>

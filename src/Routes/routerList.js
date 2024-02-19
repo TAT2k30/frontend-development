@@ -35,7 +35,7 @@ const privateRouter = [
         element: <Main/>
     },
     {
-        path: '/admin_dashboard/image/size',
+        path: '/admin_dashboard/image',
         element: <Main/>
     }
 ]
@@ -43,7 +43,7 @@ const privateRouter = [
 const AdminPath = {
     UserList : "/admin_dashboard/user",
     MainLayout : "/admin_dashboard",
-    ImageSize : "/admin_dashboard/image/size"
+    Image : "/admin_dashboard/image"
 }
 const UserPath = {
     MainLayout : "/",
