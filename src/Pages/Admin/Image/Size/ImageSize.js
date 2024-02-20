@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Size from './Size.scss';
 import axios from 'axios';
 import { baseUrl } from '../../../../Assets/Data/baseUrl';
+import CuteImg from '../../../../Assets/Image/Cute.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './Size.scss';
 
 function ImageSize(props) {
     const [sizeResult, setSizeResult] = useState([]);
@@ -19,38 +22,44 @@ function ImageSize(props) {
 
         getAllPaperSize();
     }, []);
+    let dataPaginate = sizeResult.length + 1;
+    let Lastpage = Math.ceil(dataPaginate/4);
+    console.log(Lastpage)
 
     return (
-        <div>
-            <h2>Paper Sizes</h2>
-            {sizeResult.length > 0 ? (
-                <table className="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Width</th>
-                            <th>Height</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sizeResult.map((size, index) => (
-                            <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{size.name}</td>
-                                <td>{size.dimensions}</td>
-                                <td>{size.description}</td>
-                                <td>
-                                <input/>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <p>Loading data...</p>
-            )}
+        <div className="size-card-container">
+            <h2>Photo Sizes</h2>
+            <div className="size-card-list">
+                {sizeResult.length > 0 ? (
+                    sizeResult.map((size, index) => (
+                        <div className="size-card" key={index}>
+                            <div className="size-card-image" style={{ backgroundImage: `url(${CuteImg})` }} />
+                            <div className="status-icon">
+                                    <FontAwesomeIcon icon={size.status ? faEye : faEyeSlash} color={size.status ? 'green' : 'red'} size='2x'/>
+                                </div>
+                            <div className="size-card-details">
+                                <div className="size-card-header">
+                               
+                                    <h3><b>{size.name}</b></h3>
+                                </div>
+                                <div className="size-card-body">
+                                    <div className="size-card-content">
+                                        <p><strong><b>Dimensions:</b></strong><br />- {size.dimensions}</p>
+                                        <p><strong><b>Description:</b></strong><br />- {size.description}</p>
+                                        <p><strong><b>Status:</b></strong> {size.status ? "Public" : "Hidden"}</p>
+                                    </div>
+                                </div>
+                                <div className="size-card-footer">
+                                    <input type="button" value="Edit" />
+                                </div>
+                                
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p>Loading data...</p>
+                )}
+            </div>
         </div>
     );
 }
