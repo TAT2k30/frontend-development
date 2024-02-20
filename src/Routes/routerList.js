@@ -37,13 +37,18 @@ const privateRouter = [
     {
         path: '/admin_dashboard/image',
         element: <Main/>
+    },
+    {
+        path: '/admin_dashboard/product',
+        element: <Main/>
     }
 ]
 
 const AdminPath = {
     UserList : "/admin_dashboard/user",
     MainLayout : "/admin_dashboard",
-    Image : "/admin_dashboard/image"
+    Image : "/admin_dashboard/image",
+    Product: "/admin_dashboard/product"
 }
 const UserPath = {
     MainLayout : "/",

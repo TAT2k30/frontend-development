@@ -20,6 +20,7 @@ function UserCreateImage(props) {
     const fetchUserImages = async () => {
       try {
         const response = await axios.post(`${baseUrl}/Image/${token.UserId}`);
+        console.log(response.data.$values)
         setUserImgUrl(response.data.data.$values);
       } catch (error) {
         console.error('Error fetching user images:', error);
@@ -27,17 +28,17 @@ function UserCreateImage(props) {
     };
 
     fetchUserImages();
-  },[]);
-
+  },[token.UserId]);
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
     setFiles(Array.from(selectedFiles));
-    // Chỉ cập nhật fileNames khi có nhập liệu mới
-    if (!fileNames.length) {
+    // Chỉ cập nhật fileNames khi có nhập liệu mới và fileNames tồn tại
+    if (!fileNames || !fileNames.length) {
       const names = Array.from(selectedFiles).map(file => file.name);
       setFileNames(names);
     }
   };
+
   
 
   const handleSubmit = async (e) => {

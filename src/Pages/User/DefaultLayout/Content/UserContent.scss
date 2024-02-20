@@ -71,13 +71,9 @@
     display: flex;
     align-items: center;
 
-    .calendar,
-    .print,
-    .canva,
-    .homeDecor,
-    .photoBook {
+    .checkout-item {
       margin: 10px;
-      .Checkout-img-container {
+      .checkout-img-container {
         background-color: #ffffff;
         border-radius: 50%;
         flex-direction: column;

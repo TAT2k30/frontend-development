@@ -7,6 +7,7 @@ import './Main.scss';
 import DataAnalytic from '../../DataAnalytic/DataAnalytic';
 import ListUser from '../../List/ListUser';
 import ImageSize from '../../Image/Size/ImageSize';
+import Product from '../../Product/Product';
 
 function Main(props) {
     const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -22,11 +23,11 @@ function Main(props) {
             case '/admin_dashboard/user':
                 setContent(<ListUser />);
                 break;
-            case '/admin_dashboard/product':
-                setContent('Product content');
-                break;
             case '/admin_dashboard/image':
                 setContent(<ImageSize />);
+                break;
+            case '/admin_dashboard/product':
+                setContent(<Product />);
                 break;
             default:
                 setContent(<DataAnalytic />);
@@ -38,12 +39,10 @@ function Main(props) {
             <SideBar sidebarVisible={sidebarVisible} toggleSidebar={toggleSidebar} />
             <div className="content-wrapper">
                 <div className="main-content">
-                <HeaderAdmin toggleSidebar={toggleSidebar} />
+                    <HeaderAdmin toggleSidebar={toggleSidebar} />
                     <div className="dashboard-links">
-                      
                     </div>
                     <div className="dashboard-widgets">
-                    
                         {content}
                     </div>
                 </div>

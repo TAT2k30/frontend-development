@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './UserContent.scss';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
@@ -9,10 +9,12 @@ import printCheckout from '../../../../Assets/Image/print.jpg';
 import canvaCheckout from '../../../../Assets/Image/canvas.jpg';
 import homeDecorCheckout from '../../../../Assets/Image/homeDecor.jpg';
 import photoBookCheckout from '../../../../Assets/Image/photoBook.jpg';
+import axios from 'axios';
+import { baseUrl } from '../../../../Assets/Data/baseUrl';
 function UserContent() {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     const customData = location.state;
     if (customData) {
@@ -24,9 +26,22 @@ function UserContent() {
       }
     }
   }, [location.state, navigate]);
+  useEffect(() => {
+    const getAllProducts = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/Product`);
+        setProducts(response.data.data.$values);
 
+      } catch (error) {
+        alert("Error. Please check your console for details.");
+        console.error(error);
+      }
+    };
+
+    getAllProducts();
+  }, []);
   return (
-    
+
     <div className='user-content-form'>
       <NotificationContainer />
       <video src={video} autoPlay loop className="video-full-height" muted />
@@ -37,49 +52,19 @@ function UserContent() {
       </h5>
       <div className='category-checkout'>
         <div className='checkout-line'>
-          <div className='calendar'>
-            <div className='Checkout-img-container'>
-              <img src={calenderCheckout} alt="Calendar" />
+          {products.map(product => (
+            <div className='checkout-item' key={product.id}>
+              <div className='checkout-img-container'>
+                <img src={product.pImgUrl} alt={product.name} />
+              </div>
+              <div className='text-checkout-img'>
+                <span>{product.name}</span>
+              </div>
             </div>
-            <div className='text-checkout-img'>
-              <span>Calendar</span>
-            </div>
-          </div>
-          <div className='print'>
-            <div className='Checkout-img-container'>
-              <img src={printCheckout} alt="Print" />
-            </div>
-            <div className='text-checkout-img'>
-              <span>Print</span>
-            </div>
-          </div>
-          <div className='canva'>
-            <div className='Checkout-img-container'>
-              <img src={canvaCheckout} alt="Canva" />
-            </div>
-            <div className='text-checkout-img'>
-              <span>Canva</span>
-            </div>
-          </div>
-          <div className='homeDecor'>
-            <div className='Checkout-img-container'>
-              <img src={homeDecorCheckout} alt="Home Decor" />
-            </div>
-            <div className='text-checkout-img'>
-              <span>Home Decor</span>
-            </div>
-          </div>
-          <div className='photoBook'>
-            <div className='Checkout-img-container'>
-              <img src={photoBookCheckout} alt="Photo Book" />
-            </div>
-            <div className='text-checkout-img'>
-              <span>Photo Book</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-   
+
     </div>
   );
 }

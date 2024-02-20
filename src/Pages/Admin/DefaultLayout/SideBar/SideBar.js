@@ -10,10 +10,7 @@ function SideBar({ sidebarVisible, toggleSidebar }) {
         <Link to={AdminPath.MainLayout}>Statistic</Link>
         <Link to={AdminPath.UserList}>User</Link>
         <Link to={AdminPath.Image}>Image</Link>
-        <Link to={AdminPath.UserList}>User</Link>
-        <Link to={AdminPath.UserList}>User</Link>
-        <Link to={AdminPath.UserList}>User</Link>
-        
+        <Link to={AdminPath.Product}>Product</Link>        
         <button onClick={toggleSidebar}>Toggle Sidebar</button>
     </div>
     );
