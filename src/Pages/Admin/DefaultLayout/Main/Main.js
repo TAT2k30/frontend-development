@@ -12,6 +12,7 @@ import ImageSize from '../../Image/Size/ImageSize';
 import Image from '../../Image/Image';
 //Product
 import Product from '../../Product/Product';
+import { AdminPath } from '../../../../Routes/routerList';
 
 
 function Main(props) {
@@ -25,13 +26,13 @@ function Main(props) {
 
     useEffect(() => {
         switch (location.pathname) {
-            case '/admin_dashboard/user':
+            case AdminPath.UserList:
                 setContent(<ListUser />);
                 break;
-            case '/admin_dashboard/image':
+            case AdminPath.Image:
                 setContent(<Image/>);
                 break;
-            case '/admin_dashboard/product':
+            case AdminPath.Product:
                 setContent(<Product />);
                 break;
             default:

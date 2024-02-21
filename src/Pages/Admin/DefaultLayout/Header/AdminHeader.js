@@ -1,26 +1,24 @@
-// AdminHeader.jsx
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../../../../Assets/Data/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt, faBars } from "@fortawesome/free-solid-svg-icons";
-import Logo from "../../../../Assets/Image/Logo/logo-png.png"
+import Logo from "../../../../Assets/Image/Logo/logo-png.png";
 import "./AdminHeader.scss";
+import { UserPath } from "../../../../Routes/routerList";
 
 function AdminHeader({ toggleSidebar }) {
   const { token, logout } = useContext(DataContext);
+  const navigate = useNavigate();
+
 
   return (
     <div className="admin-header-container">
-      <div className="left-links">
-
+      <div className="admin-left-links">
         <FontAwesomeIcon icon={faBars} onClick={toggleSidebar} className="toggle-button" />
-
-        <Link to="/">Home</Link>
-        <Link to="/create">Create</Link>
       </div>
-      <div className="logo-center">
-        <img src={Logo} width={70} />
+      <div className="logo-center" onClick={()=>navigate('/')}>
+        <img src={Logo} width={70} alt="Logo" />
       </div>
       <div className="right-info">
         {token ? (
@@ -49,7 +47,6 @@ function AdminHeader({ toggleSidebar }) {
           </div>
         )}
       </div>
-
     </div>
   );
 }

@@ -1,11 +1,11 @@
 .sidebar {
-    width: 200px; 
+    width: 150px; 
     background-color: #1D1B1B;
     color: #1D1B1B;
     padding: 20px;
     margin: 0;
     white-space: nowrap;
-    transition: width 0.2s ease, opacity 0.3s ease; // Thêm opacity vào transition
+    transition: width 0.2s ease, opacity 0.3s ease;
     margin-right: 22px;
     a {
       display: block;
@@ -22,7 +22,7 @@
   
   .sidebar.collapsed {
   
-    transition: width 0.2s ease, opacity 0.1s ease; // Thêm opacity vào transition
+    transition: width 0.2s ease, opacity 0.1s ease; 
     width: 0;
     padding: 0;
     margin: 0;

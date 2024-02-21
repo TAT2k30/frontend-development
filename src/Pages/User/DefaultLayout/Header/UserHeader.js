@@ -24,20 +24,20 @@ function UserHeader() {
   }, [location.pathname])
   return (
     <div className="user-header-container">
-      <div className="left-links">
+      <div className="user-left-links">
         <Link to={UserPath.MainLayout}>
           <img src={imageLogo} alt="Logo" width={60} style={{ borderRadius: 10 }} />
         </Link>
-        <Link to={UserPath.MainLayout} style={routeCheckout === "main" ? {backgroundColor: "#4c4c4c", padding: 10, borderRadius: 20, color : "#EC4D37"} : {}}><b>Home</b></Link>
-        <Link to={UserPath.Upload} style={routeCheckout === "upload" ? {backgroundColor: "#4c4c4c", padding: 10, borderRadius: 20, color : "#EC4D37"} : {}}><b>Create</b></Link>
+        <Link to={UserPath.MainLayout} style={routeCheckout === "main" ? {backgroundColor: "#4c4c4c", padding: 7, borderRadius: 20, color : "#EC4D37"} : {}}><b>Home</b></Link>
+        <Link to={UserPath.Upload} style={routeCheckout === "upload" ? {backgroundColor: "#4c4c4c", padding: 7, borderRadius: 20, color : "#EC4D37"} : {}}><b>Create</b></Link>
       </div>
       <div className="user-search-container">
         <SearchBar />
       </div>
-      <div className="right-info">
+      <div className="user-right-info">
         {token ? (
           <>
-            <FontAwesomeIcon icon={faBell} size='2x' className="bell-icon" />
+            <FontAwesomeIcon icon={faBell}  className="bell-icon" />
             <div className="hummm">
               
               <img
@@ -51,7 +51,7 @@ function UserHeader() {
                 }}
               />
 
-              <FontAwesomeIcon icon={faRightFromBracket} size="2x" onClick={() => {
+              <FontAwesomeIcon icon={faRightFromBracket}  onClick={() => {
                 logout(token.Email);
               }} className="user-btn-logout" />
 

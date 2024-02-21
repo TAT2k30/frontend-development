@@ -9,6 +9,7 @@ import UserDetail from '../../UserDetail/UserDetail';
 import Login from '../../Login/UserLogin';
 import SignUp from '../../SignUp/UserSignUp';
 import Create from '../../Create/UserCreateImage';
+import Print from '../../ProductPages/Prints/Print';
 
 function UserMain(props) {
     const [content, setContent] = useState(null);
@@ -35,6 +36,9 @@ function UserMain(props) {
                 break;
             case UserPath.Upload:
                 setContent(<Create />);
+                break;
+            case UserPath.ProductPrint:
+                setContent(<Print/>);
                 break;
             default:
                 setContent(<Content />);

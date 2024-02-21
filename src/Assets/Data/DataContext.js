@@ -8,6 +8,10 @@ import { AdminPath, UserPath} from "../../Routes/routerList";
 const DataContext = createContext();
 
 function DataProvider({ children }) {
+    /*
+    ==> Current route 
+    */
+   const [currentRoute, setCurrentRoute] = useState(UserPath.MainLayout);
     /* 
     ==> Token service
     */
@@ -85,7 +89,9 @@ function DataProvider({ children }) {
         deleteUserById,
         getAllAccounts,
         userList,
-        navigate
+        navigate,
+        currentRoute,
+        setCurrentRoute
         
     }
 

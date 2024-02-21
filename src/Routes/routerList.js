@@ -22,6 +22,10 @@ const publicRouter = [
     {
         path: "/uploads",
         element: <MainUser/>
+    },
+    {
+        path: "/print",
+        element: <MainUser/>
     }
 ]
 //Route chỉ giành cho Admin
@@ -55,7 +59,8 @@ const UserPath = {
     Login : "/login",
     SignUp : "/signup",
     Upload : "/uploads",
-    Detail : "/detail"
+    Detail : "/detail",
+    ProductPrint : "/print"
 }
 export {
     publicRouter,

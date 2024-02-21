@@ -5,84 +5,83 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 65px;
+  height: 50px;
   
-}
-
-@media (max-width: 768px) {
-  .user-header-container {
+  @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
     height: auto;
   }
-}
-
-.left-links {
-  display: flex;
-  align-items: center;
-
-  a {
-    margin-right: 20px;
-    margin-bottom: 0; 
-    text-decoration: none;
-    color: #858484;
-    font-size: 16px;
-    transition: color 0.3s ease;
-    &:hover {
-      color: #EC4D37;
-    }
-
-    @media (max-width: 768px) {
-      margin-right: 0;
-    }
-  }
-}
-
-.user-search-container {
-  display: flex;
-  align-items: center;
-  width: 60%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-}
-
-
-
-.right-info {
-  align-items: center;
-  justify-content: space-between;
-
-
+  
+  .user-left-links {
     display: flex;
+    align-items: center;
+    
+    a{
+      
+      margin-right: 20px;
+      margin-bottom: 0; 
+      text-decoration: none;
+      color: #858484;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: #EC4D37;
+      }
+      
+      @media (max-width: 768px) {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  .user-search-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  
+  .user-right-info {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    
     .bell-icon {
+      font-size: 20px;
       &:hover {
         color: #EC4D37;
         transition: color 0.3s ease;
         cursor: pointer;
       }
     }
-    .hummm{
-      display: flex;
-      .user-btn-logout {
     
-        
+    .hummm {
+      display: flex;
+      align-items: center;
+      
+      .user-btn-logout {
+        font-size: 20px;
         &:hover {
           color: #EC4D37;
           transition: color 0.3s ease;
           cursor: pointer;
-        
         }
       }
+      
       .imgAvatar {
-        height: 37px;
-        width: 35px;
+        height: 30px;
+        width: 30px;
         border-radius: 50%;
         margin-right: 10px;
         box-shadow: inset #858484;
+        
         &:hover {
-          filter: brightness(1.2);
+          filter: brightness(1.1);
           cursor: pointer;
         }
       
@@ -92,18 +91,12 @@
       }
     }
   }
-
-
+  
   .right-links {
     display: flex;
     
     @media (max-width: 768px) {
       flex-direction: column;
     }
-    
   }
-
-
-
-
-
+}
