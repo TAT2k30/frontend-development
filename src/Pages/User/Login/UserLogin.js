@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./UserLogin.scss";
 import { baseUrl } from "../../../Assets/Data/baseUrl";
+import { Link } from "react-router-dom";
 
 function UserLogin(props) {
 
@@ -100,7 +101,7 @@ function UserLogin(props) {
             <div className="mb-3">
               
                 <b>Password:</b>
-              
+                <Link className="forgot-passowrd-text">Forgot passowrd</Link>
               <input
                 type="password"
                 className={`form-control ${
@@ -121,7 +122,9 @@ function UserLogin(props) {
                 </div>
               )}
             </div>
-
+            <div className="missing-account-text">
+             <Link to="/signup">Don't have an account?</Link>
+            </div>
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? (
                 <span
@@ -132,10 +135,9 @@ function UserLogin(props) {
               ) : (
                 "Submit"
               )}
+              
             </button>
-            <div>
-              <a href="/register">Don't have an account?</a>
-            </div>
+            
           </form>
         </div>
       </div>

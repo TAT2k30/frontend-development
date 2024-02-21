@@ -5,9 +5,14 @@ import SideBar from '../SideBar/SideBar';
 import { useLocation } from 'react-router-dom';
 import './Main.scss';
 import DataAnalytic from '../../DataAnalytic/DataAnalytic';
+//User
 import ListUser from '../../List/ListUser';
+//Image
 import ImageSize from '../../Image/Size/ImageSize';
+import Image from '../../Image/Image';
+//Product
 import Product from '../../Product/Product';
+
 
 function Main(props) {
     const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -24,7 +29,7 @@ function Main(props) {
                 setContent(<ListUser />);
                 break;
             case '/admin_dashboard/image':
-                setContent(<ImageSize />);
+                setContent(<Image/>);
                 break;
             case '/admin_dashboard/product':
                 setContent(<Product />);

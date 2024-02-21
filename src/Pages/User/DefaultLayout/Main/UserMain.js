@@ -17,7 +17,6 @@ function UserMain(props) {
 
     const handleNavigation = useCallback(() => {
         setShowShadow(window.scrollY > 0);
-        console.log(showShadow);
     }, []);
 
     useEffect(() => {
@@ -51,7 +50,7 @@ function UserMain(props) {
 
     return (
         <div className={`user-container`}>
-            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)', 'backgroundColor': '#eed9cbe3'} : {}} >
+            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)', 'backgroundColor': '#eed9cbe8'} : {}} >
                 <Header />
             </div>
             <div className='user-main-content'>

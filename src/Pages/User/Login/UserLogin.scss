@@ -2,6 +2,7 @@
 .user-login-form {
   display: flex;
   height: 100vh;
+  background-color: #d1c7c7a9;
 }
 
 .checkout-section {
@@ -10,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: #c9eccb;
 
   .checkout-card {
     width: 80%;
@@ -19,7 +20,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color:  #f0eae6a9;
     text-align: center;
 
     p {
@@ -49,7 +50,13 @@
       font-size: 1.5em;
       margin-bottom: 20px;
     }
-
-    /* Your existing styles for the form container */
   }
+}
+.missing-account-text{
+  margin-top:  -15px;
+  margin-bottom: 20px;
+}
+.forgot-passowrd-text{
+  right: auto;
+  text-decoration: none;
 }

@@ -20,10 +20,10 @@ function Product(props) {
             }
         };
 
-        getAllProducts();
+        getAllProducts();   
     }, []);
 
-    return (
+    return (                
         <div className='admin-product'>
             <h2>Product list</h2>
         <div className="product-card-container">
@@ -40,7 +40,7 @@ function Product(props) {
                             ) : (
                                 <FontAwesomeIcon icon={faEyeSlash} />
                             )}
-                            <span>{product.Status}</span>
+                            <span>{product.status}</span>
                         </div>
                     </div>
                 </div>

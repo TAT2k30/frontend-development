@@ -1,6 +1,5 @@
 // Main.scss
 .toggle-button {
-  background-color: #3498db;
   color: white;
   border: none;
   border-radius: 50%; /* Làm cho nút có hình dạng hình tròn */
@@ -15,20 +14,19 @@
 }
 
 .toggle-icon {
-  width: 30px; 
+  width: 30px;
   height: 20px;
 }
 
 .dashboard-container {
-  
   display: flex;
   height: 100vh;
-  background-color: #248cd27d;
+  background-color: #fff;
 }
 
 .content-wrapper {
   margin-left: 5px;
-  flex: 1; 
+  flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
   width: calc(100% - 200px);

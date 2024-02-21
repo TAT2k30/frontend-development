@@ -1,6 +1,10 @@
-import React from 'react';
-import Frame from './Frame.scss'
-function Frame(props) {
+import React, { useEffect, useState } from 'react';
+import './ImageFrame.scss'
+import axios from 'axios';
+import { baseUrl } from '../../../../Assets/Data/baseUrl';
+
+
+function ImageFrame(props) {
     const [frameResult, setFrameResult] = useState([]);
 
     useEffect(() => {
@@ -19,8 +23,8 @@ function Frame(props) {
 
     return (
         <div>
-             <h2>Photo frame</h2>
-            {sizeResult.length > 0 ? (
+            <h2>Photo frame</h2>
+            {frameResult.length > 0 ? (
                 <table className="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -39,7 +43,7 @@ function Frame(props) {
                                 <td>{frame.description}</td>
                                 <td>{frame.status}</td>
                                 <td>
-                                <input/>
+                                    <input />
                                 </td>
                             </tr>
                         ))}
@@ -52,4 +56,4 @@ function Frame(props) {
     );
 }
 
-export default Frame;
+export default ImageFrame;

@@ -1,96 +1,118 @@
 .size-card-container {
-    width: 100%;
-  
-    .size-card-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-  
-      .size-card {
-        position: relative;
-        width: calc(25% - 20px);
-        margin-bottom: 20px;
-        overflow-y: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease;
-  
-        &:hover {
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  background-color: #ffffff98;
+  border-radius: 10px;
+
+
+  .size-intro {
+    font-size: xx-large;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    h3{
+      margin: 5px;
+    }
+    .button-size {
+      border: none;
+      background-color: transparent;
+      margin-right: 5px;
+    }
+  }
+
+  .size-card-list {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    .size-card {
+      position: relative;
+      width: calc(25% - 40px);
+      margin-bottom: 20px;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      &:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.458);
+      }
+
+      .size-card-image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+      }
+
+      .status-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+        z-index: 1;
+      }
+
+      .size-card-details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: background-color 0.3s ease;
+        transform: translateY(-100%);
+        opacity: 0;
+
+        .size-card-header {
+          padding: 16px;
+          border-bottom: 1px solid #e0e0e0;
+          background-color: #ffffff;
+          font-size: 18px;
+          font-weight: bold;
+          color: #000000;
         }
-  
-        .size-card-image {
-          width: 100%;
-          height: 200px;
-          background-size: cover;
+
+        .size-card-body {
+          padding: 16px;
+          font-size: 14px;
+          color: #000000;
+          background-color: #88c5efe7;
+
+          .size-card-content {
+            font-size: larger;
+          }
         }
-        .status-icon {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 10px;
-            z-index: 1;
-          }
-  
-        .size-card-details {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(255, 255, 255, 0.8);
-          transition: background-color 0.3s ease;
-          transform: translateY(-100%);
-          opacity: 0;
-  
-          .size-card-header {
-            padding: 16px;
-            border-bottom: 1px solid #e0e0e0;
-            background-color: #ffffff;
-            font-size: 18px;
-            font-weight: bold;
-            color: #000000;
-  
-           
-          }
-  
-          .size-card-body {
-            padding: 16px;
-            font-size: 14px;
-            color: #000000;
-            background-color: #88c5efe7;
-  
-            .size-card-content {
-              font-size: larger;
+
+        .size-card-footer {
+          padding: 16px;
+          border-top: 1px solid #e0e0e0;
+          text-align: right;
+
+          input[type="button"] {
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: #2980b9;
             }
           }
-  
-          .size-card-footer {
-            padding: 16px;
-            border-top: 1px solid #e0e0e0;
-            text-align: right;
-  
-            input[type="button"] {
-              padding: 8px 16px;
-              background-color: #3498db;
-              color: #ffffff;
-              border: none;
-              border-radius: 4px;
-              cursor: pointer;
-              transition: background-color 0.3s ease;
-  
-              &:hover {
-                background-color: #2980b9;
-              }
-            }
-          }
         }
-  
-        &:hover .size-card-details {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      }
+
+      &:hover .size-card-details {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }
-  
+
+  .size-pagination {
+    justify-content: center;
+    text-align: center;
+  }
+}
