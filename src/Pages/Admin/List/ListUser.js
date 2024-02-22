@@ -9,17 +9,32 @@ function ListUser(props) {
   //Data
   const { deleteUserById, getAllAccounts, userList, navigate } = useContext(DataContext);
   const [roleFilter, setRoleFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Function
+  // const filterUserList = () => {
+  //   if (roleFilter === 'Admin') {
+  //     return userList.filter(user => user.role === 'Admin');
+  //   } else if (roleFilter === 'User') {
+  //     return userList.filter(user => user.role === 'User');
+  //   } else {
+  //     return userList;
+  //   }
+  // };
   const filterUserList = () => {
-    if (roleFilter === 'Admin') {
-      return userList.filter(user => user.role === 'Admin');
-    } else if (roleFilter === 'User') {
-      return userList.filter(user => user.role === 'User');
-    } else {
-      return userList;
+    let filteredUsers = userList;
+    if (roleFilter) {
+      filteredUsers = filteredUsers.filter(user => user.role === roleFilter);
     }
+    if (searchTerm) {
+      filteredUsers = filteredUsers.filter(user =>
+        user.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    return filteredUsers;
   };
+
   const IsUserOnline = (time) => {
     if (!time) return ''; // Kiểm tra nếu time là null hoặc không tồn tại, trả về chuỗi rỗng
     const lastLoginTime = new Date(time.replace(/(\d{2})\/(\d{2})\/(\d{2})/, "20$3-$1-$2"));
@@ -50,6 +65,12 @@ function ListUser(props) {
         <h2>User Data</h2>
         <div className="user-info">
           <button onClick={() => { navigate("/create") }} className="user-name">Create a new User</button>
+          <input
+              type="text"
+              placeholder="Search users..."
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
         </div>
       </div>
       <div className="filter-area">
