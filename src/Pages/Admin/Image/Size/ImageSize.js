@@ -3,9 +3,11 @@ import axios from 'axios';
 import { baseUrl } from '../../../../Assets/Data/baseUrl';
 import CuteImg from '../../../../Assets/Image/Cute.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faUpLong, faDownLong } from '@fortawesome/free-solid-svg-icons';
-import './Size.scss';
+import { faEye, faEyeSlash, faUpLong, faDownLong, faPlus } from '@fortawesome/free-solid-svg-icons';
+import './ImageSize.scss';
 import Pagination from '../../../../Services/Pagination/Pagination';
+import LoadingImg from '../../../../Services/Loading/LoadingImg';
+import { size } from 'polished';
 
 function ImageSize(props) {
     const [sizeResult, setSizeResult] = useState([]);
@@ -36,8 +38,13 @@ function ImageSize(props) {
 
     return (
         <div className="size-card-container">
-            <div className='size-intro'>
-                <h3>Size list</h3>
+            <div className='size-intro' style={showContent ? {borderBottomLeftRadius:0,borderBottomRightRadius:0 }:{}}>
+            <div className='left-size-intro'>
+                    <h3>Size list</h3>
+                    <button className='size-button-addRange' onClick={()=>{alert("HEllo")}}><FontAwesomeIcon icon={faPlus}/></button>
+                </div>
+                
+                <span>There are {sizeResult.length} sizes have been added</span>
                 <button className='button-size' onClick={toggleContent}><FontAwesomeIcon icon={showContent ? faUpLong : faDownLong} /></button>
             </div>
             {showContent && (
@@ -68,7 +75,7 @@ function ImageSize(props) {
                                 </div>
                             ))
                         ) : (
-                            <p>Loading data...</p>
+                            <div className='size-list-loading'><LoadingImg/></div>
                         )}
                     </div>
                     <div className='size-pagination'>

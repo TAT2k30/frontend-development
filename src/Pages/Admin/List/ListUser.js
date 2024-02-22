@@ -4,6 +4,7 @@ import { DataContext } from '../../../Assets/Data/DataContext';
 import './ListUser.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
+import LoadingImg from '../../../Services/Loading/LoadingImg';
 
 function ListUser(props) {
   //Data
@@ -143,7 +144,6 @@ function ListUser(props) {
                     </span>
                   </td>
                   <td>
-
                     <FontAwesomeIcon icon={faPenToSquare} className='actions-btn-edit' />
                     <FontAwesomeIcon icon={faTrash} className='actions-btn-delete' onClick={() => deleteUserById(user.id)} />
                     <FontAwesomeIcon icon={faEye} className='actions-btn-view' />
@@ -153,7 +153,7 @@ function ListUser(props) {
             </tbody>
             </table>
         ) : (
-          <span>Loading data...</span>
+          <span className='user-list-loading'><LoadingImg/></span>
         )}
       </div>
     </div>

@@ -1,65 +1,63 @@
 /* ListUser.scss */
 
-.admin-list{
+.admin-list {
   height: 100vh;
 
-  
   .card-header {
     background-color: #007bff;
     color: white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    
+    align-items: center;
   }
-  
+
   .card-body {
     padding: 20px;
+    .user-list-loading{
+      border: #333 2px; 
+    }
   }
-  
+
   .user-info {
     display: flex;
     align-items: center;
   }
-  
+
   .user-avatar {
     width: 50px;
     border-radius: 50%;
     margin-right: 10px;
   }
-  
+
   .filter-area {
     margin-bottom: 20px;
-  
+
     label {
       margin-right: 10px;
       font-weight: bold;
       color: #333;
     }
-  
-    
-    
   }
-  
+
   .user-name {
     font-weight: bold;
   }
-  
+
   .table {
     th,
     td {
       text-align: center;
     }
   }
-  
+
   .imgAvatar {
     width: 50px;
     height: 50px;
     border-radius: 50px;
     margin-right: 10px;
   }
-  
+
   .status-indicator {
     width: 10px;
     height: 10px;
@@ -67,49 +65,48 @@
     display: inline-block;
     margin-right: 5px;
   }
-  
+
   .status-text {
     font-weight: bold;
   }
-  
+
   .last-login {
     margin-left: 10px;
   }
-  
+
   .status-indicator.online {
     background-color: #28a745;
   }
-  
+
   .status-indicator.offline {
     background-color: #6c757d;
   }
-  
+
   .text-success {
     color: #28a745;
   }
-  
+
   .text-secondary {
     color: #6c757d;
   }
-  
-  .actions-btn-delete{
+
+  .actions-btn-delete {
     margin-left: 10px;
   }
   .actions-btn-delete:hover {
     color: rgb(124, 19, 19);
     cursor: pointer;
-   
   }
   .actions-btn-edit:hover {
     color: rgb(3, 51, 149);
     cursor: pointer;
   }
-  .actions-btn-view{
+  .actions-btn-view {
     margin-left: 10px;
   }
   .actions-btn-view:hover {
     color: rgb(37, 203, 240);
     cursor: pointer;
   }
-  
 }
+
