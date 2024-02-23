@@ -11,6 +11,7 @@ import PhotoCreateRange from '../PhotoPopup/PhotoCreateRange';
 
 
 function ImageFrame(props) {
+    
     const [frameResult, setframeResult] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(8);

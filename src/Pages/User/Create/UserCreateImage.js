@@ -77,7 +77,6 @@ function UserCreateImage(props) {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('Response from server:', response.data);
       setFiles([]);
       alert('Images uploaded successfully.');
     } catch (error) {

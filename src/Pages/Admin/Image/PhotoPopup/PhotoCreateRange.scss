@@ -19,7 +19,7 @@
         overflow: hidden;
        
         .add-range-modal-close {
-            background-color: rgb(221, 237, 241);
+            background-color: rgb(245, 255, 138);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -32,7 +32,7 @@
                 background-color: #fff;
                 border-radius: 4px;
                 padding: 8px;
-                background-color:rgb(221, 237, 241);
+                background-color: rgb(245, 255, 138);
             }
 
             .top-delete-btn {
@@ -54,22 +54,73 @@
             padding: 20px;
             height: calc(100% - 120px);
             position: relative;
-            background-color: #d2d2d2;
-
+            background-color: #f5f5f5;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
             h2 {
                 margin-bottom: 10px;
             }
-            .addRange-textArea {
-               
-                overflow-y: auto;
-                padding: 10px;
-                border: none; 
-                border-radius: 4px;
-                width: calc(100% - 22px);
-                font-size: 16px; 
-                line-height: 1.5; 
-                .Json-editor{
-                    height: 190px;
+            .photo-dragDrop-file{
+                margin: auto;
+                display:flex ;
+                .photo-dragDrop-dashedBox{
+                    background-color: #d6eeff;
+                    border: dashed black;
+                    border-radius: 20px;
+                    
+                    .addRange-props{
+                        padding: 30px;
+                        .jsonFile-text{
+                           padding-left: 30px;
+                        }
+                    }
+                }
+                .JsonFile-props{
+                    border: solid black;
+                    max-width: 224px;
+                    border-radius: 10px;
+                    background-color: #f1fbb7;
+                    margin-left: 20px;
+                    max-height: 264px;
+                    overflow-y: auto;
+                    .File-details {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    
+                        .File-header {
+                            border-bottom: solid black;
+                            text-align: center;
+                            font-size: larger;
+                            font-weight: bolder;
+                            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                        }
+                    
+                        .File-content {
+                            flex: 1;
+                            overflow-y: auto; 
+                        }
+                        .File-content{
+                            margin: 10px;
+                        }
+                        .File-footer {
+                          padding-left: 70px;
+                          padding-bottom: 10px;
+                         
+                          button{
+
+                            border-radius: 20px;
+                            border: none;
+                            background-color: rgb(251, 154, 154);
+                            transition: background-color 0.2s ease;
+                            &:hover{
+                                background-color: rgb(255, 38, 38);
+                            }
+                          }
+                        }
+                    }
+                    
                 }
             }
         }
@@ -105,4 +156,6 @@
             }
         }
     }
+
+    
 }
