@@ -7,6 +7,7 @@ import { faEye, faEyeSlash, faUpLong, faDownLong, faPlus } from '@fortawesome/fr
 import './ImageFrame.scss';
 import Pagination from '../../../../Services/Pagination/Pagination';
 import LoadingImg from '../../../../Services/Loading/LoadingImg';
+import PhotoCreateRange from '../PhotoPopup/PhotoCreateRange';
 
 
 function ImageFrame(props) {
@@ -37,59 +38,64 @@ function ImageFrame(props) {
     };
 
     return (
+        <>
+       
         <div className="frame-card-container">
-            <div className='frame-intro' style={showContent ? {borderBottomLeftRadius: 0, borderBottomRightRadius: 0}:{}}>
-                <div className='left-frame-intro'>
-                    <h3>Frame list</h3>
-                    <button className='frame-button-addRange' onClick={()=>{setIsOpen(!isOpen)}}><FontAwesomeIcon icon={faPlus}/></button>
-                </div>
-                {frameResult.length === 0 ? <span>Frame has no data yet</span> : <spam>There are {frameResult.length} frames have been added</spam>}
-                <button className='button-frame' onClick={toggleContent}><FontAwesomeIcon icon={showContent ? faUpLong : faDownLong} /></button>
+        <div className='frame-intro' style={showContent ? {borderBottomLeftRadius: 0, borderBottomRightRadius: 0}:{}}>
+            <div className='left-frame-intro'>
+                <h3>Frame list</h3>
+                <button className='frame-button-addRange' onClick={()=>{setIsOpen(!isOpen)}}><FontAwesomeIcon icon={faPlus}/></button>
             </div>
+            {frameResult.length === 0 ? <span>Frame has no data yet</span> : <spam>There are {frameResult.length} frames have been added</spam>}
+            <button className='button-frame' onClick={toggleContent}><FontAwesomeIcon icon={showContent ? faUpLong : faDownLong} /></button>
+        </div>
 
-            {showContent && (
-                <>
-                    <div className="frame-card-list" style={showContent ? { transition: "transition: transform 0.3s ease, opacity 0.3s ease" } : { transition: "transition: transform 0.3s ease, opacity 0.3s ease" }}>
-                        {currentpost.length > 0 ? (
-                            currentpost.map((frame, index) => (
-                                <div className="frame-card" key={index}>
-                                    <div className="frame-card-image" style={{ backgroundImage: `url(${CuteImg})` }} />
-                                    <div className="status-icon">
-                                        <FontAwesomeIcon icon={frame.status ? faEye : faEyeSlash} color={frame.status ? 'green' : 'red'} size='2x' />
+        {showContent && (
+            <>
+                <div className="frame-card-list" style={showContent ? { transition: "transition: transform 0.3s ease, opacity 0.3s ease" } : { transition: "transition: transform 0.3s ease, opacity 0.3s ease" }}>
+                    {currentpost.length > 0 ? (
+                        currentpost.map((frame, index) => (
+                            <div className="frame-card" key={index}>
+                                <div className="frame-card-image" style={{ backgroundImage: `url(${CuteImg})` }} />
+                                <div className="status-icon">
+                                    <FontAwesomeIcon icon={frame.status ? faEye : faEyeSlash} color={frame.status ? 'green' : 'red'} size='2x' />
+                                </div>
+                                <div className="frame-card-details">
+                                    <div className="frame-card-header">
+                                        <h3><b>{frame.name}</b></h3>
                                     </div>
-                                    <div className="frame-card-details">
-                                        <div className="frame-card-header">
-                                            <h3><b>{frame.name}</b></h3>
+                                    <div className="frame-card-body">
+                                        <div className="frame-card-content">
+                                            <p><strong><b>Dimensions:</b></strong><br />- {frame.dimensions}</p>
+                                            <p><strong><b>Description:</b></strong><br />- {frame.description}</p>
+                                            <p><strong><b>Status:</b></strong> {frame.status ? "Public" : "Hidden"}</p>
                                         </div>
-                                        <div className="frame-card-body">
-                                            <div className="frame-card-content">
-                                                <p><strong><b>Dimensions:</b></strong><br />- {frame.dimensions}</p>
-                                                <p><strong><b>Description:</b></strong><br />- {frame.description}</p>
-                                                <p><strong><b>Status:</b></strong> {frame.status ? "Public" : "Hidden"}</p>
-                                            </div>
-                                        </div>
-                                        <div className="frame-card-footer">
-                                            <input type="button" value="Edit" />
-                                        </div>
+                                    </div>
+                                    <div className="frame-card-footer">
+                                        <input type="button" value="Edit" />
                                     </div>
                                 </div>
-                            ))
-                        ) : (
-                            <div className='frame-list-loading'>
-                                <LoadingImg />
                             </div>
-                        )}
+                        ))
+                    ) : (
+                        <div className='frame-list-loading'>
+                            <LoadingImg />
+                        </div>
+                    )}
 
-                    </div>
+                </div>
 
-                    <div className='frame-pagination'>
-                        <Pagination totalPost={frameResult.length} postPerPage={postPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-                    </div>
-                </>
+                <div className='frame-pagination'>
+                    <Pagination totalPost={frameResult.length} postPerPage={postPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                </div>
+            </>
 
-            )}
+        )}
 
-        </div>
+    </div>
+    {isOpen && <PhotoCreateRange handleIsOpen={setIsOpen} isOpen={isOpen} photoType={"Photo's frame range adding"}/>}
+
+    </>
     );
 }
 

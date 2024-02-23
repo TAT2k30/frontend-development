@@ -11,14 +11,13 @@
 }
 
 .admin-left-links {
-  
-  .toggle-button{
+  .toggle-button {
     height: 30px;
     width: 40px;
     margin-right: 20px;
     background-color: #333;
     font-weight: lighter;
-    &:hover{
+    &:hover {
       background-color: #333;
     }
   }
@@ -34,13 +33,13 @@
     }
   }
 }
-.logo-center{
+.logo-center {
   justify-content: space-between;
-  img{
+  img {
     width: 45px;
     border-radius: 10px;
   }
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }

@@ -8,7 +8,6 @@ function Image(props) {
         <div className='photo-properties-container'>
             <ImageSize/>
             <ImageFrame/>
-            <PhotoCreateRange/>
         </div>
     );
 }

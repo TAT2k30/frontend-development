@@ -8,13 +8,14 @@ import './ImageSize.scss';
 import Pagination from '../../../../Services/Pagination/Pagination';
 import LoadingImg from '../../../../Services/Loading/LoadingImg';
 import { size } from 'polished';
+import PhotoCreateRange from '../PhotoPopup/PhotoCreateRange';
 
 function ImageSize(props) {
     const [sizeResult, setSizeResult] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage, setPostPerPage] = useState(8);
     const [showContent, setShowContent] = useState(false);
-
+    const [isOpen , setIsOpen] = useState(false);
     useEffect(() => {
         const getAllPaperSize = async () => {
             try {
@@ -37,11 +38,12 @@ function ImageSize(props) {
     };
 
     return (
+        <>
         <div className="size-card-container">
             <div className='size-intro' style={showContent ? {borderBottomLeftRadius:0,borderBottomRightRadius:0 }:{}}>
             <div className='left-size-intro'>
                     <h3>Size list</h3>
-                    <button className='size-button-addRange' onClick={()=>{alert("HEllo")}}><FontAwesomeIcon icon={faPlus}/></button>
+                    <button className='size-button-addRange' onClick={()=>{setIsOpen(!isOpen)}}><FontAwesomeIcon icon={faPlus}/></button>
                 </div>
                 
                 <span>There are {sizeResult.length} sizes have been added</span>
@@ -83,8 +85,10 @@ function ImageSize(props) {
                     </div>
                 </>
             )}
-
+    
         </div>
+        {isOpen && <PhotoCreateRange handleIsOpen={setIsOpen} isOpen={isOpen} photoType={"Photo's Size range adding"}/>}
+        </>
     );
 }
 

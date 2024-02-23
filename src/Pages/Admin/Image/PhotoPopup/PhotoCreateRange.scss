@@ -1,0 +1,108 @@
+.add-range-modal-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    .main-addRange-modal {
+        background-color: #fff;
+        width: 600px;
+        height: 500px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+       
+        .add-range-modal-close {
+            background-color: rgb(221, 237, 241);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            height: 50px;
+            
+            h2 {
+                margin: auto;
+                padding-right: 120px;
+                background-color: #fff;
+                border-radius: 4px;
+                padding: 8px;
+                background-color:rgb(221, 237, 241);
+            }
+
+            .top-delete-btn {
+                background-color: transparent;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #999;
+                transition: color 0.3s;
+                border-radius: 50%;
+                padding: 8px;
+                &:hover {
+                    color: rgb(238, 68, 68);
+                }
+            }
+        }
+
+        .add-range-modal-content {
+            padding: 20px;
+            height: calc(100% - 120px);
+            position: relative;
+            background-color: #d2d2d2;
+
+            h2 {
+                margin-bottom: 10px;
+            }
+            .addRange-textArea {
+               
+                overflow-y: auto;
+                padding: 10px;
+                border: none; 
+                border-radius: 4px;
+                width: calc(100% - 22px);
+                font-size: 16px; 
+                line-height: 1.5; 
+                .Json-editor{
+                    height: 190px;
+                }
+            }
+        }
+        
+
+        .add-range-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 10px;
+            padding-right: 10px;
+            .bottom-submit, .bottom-close {
+                padding: 8px 20px;
+                margin-left: 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .bottom-submit {
+                background-color: #6e95c0;
+                color: #fff;
+                &:hover {
+                    background-color: #437ebe;
+                }
+            }
+            .bottom-close {
+                background-color: #999;
+                color: #fff;
+                &:hover {
+                    background-color: rgb(199, 91, 91);
+                }
+            }
+        }
+    }
+}

@@ -1,40 +1,60 @@
 import React, { useState } from 'react';
+import './PhotoCreateRange.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function PhotoCreateRange(props) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [textAreaValue, setTextAreaValue] = useState('');
 
-    const handleChange = (event) => {
-        setTextAreaValue(event.target.value);
-    };
 
-    const handleSubmit = () => {
-        // Xử lý submit dữ liệu từ text area
-        console.log('Submitted:', textAreaValue);
-        // Đóng modal sau khi submit
-        setIsOpen(false); // Sửa đổi ở đây
-        // Xử lý dữ liệu ở đây (gửi tới server, xử lý dữ liệu, vv.)
+function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
+    const [jsonData, setJsonData] = useState({});
+
+
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    setJsonData(data);
+                } catch (error) {
+                    console.error('Invalid JSON file');
+                }
+            };
+            reader.readAsText(file);
+        }
     };
 
     return (
-        <div>
-            <button onClick={() => setIsOpen(true)}>Create range photo</button>
-            {isOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={() => setIsOpen(false)}>&times;</span> 
-                        <h2>Create Range Photo</h2>
-                        <textarea
-                            value={textAreaValue}
-                            onChange={handleChange}
-                            placeholder="Enter your text here..."
-                            rows={4}
-                            cols={50}
+        <div className='add-range-modal-container'>
+            <div className='main-addRange-modal'>
+                <div className='add-range-modal-close'>
+                    <h2>{photoType}</h2>
+                    <span>
+                        <FontAwesomeIcon
+                            icon={faTimes}
+                            onClick={() => handleIsOpen(!isOpen)}
+                            className='top-delete-btn'
                         />
-                        <button onClick={handleSubmit}>Submit</button>
+                    </span>
+                </div>
+
+                <div className='add-range-modal-content'>
+                    <h3>There must be only one file at the time</h3>
+                    <div className='addRange-textArea'>
+                        <input type="file" accept=".json" onChange={handleFileChange} />
+                        <div className='Json-editor'>
+                            
+                        </div>
                     </div>
                 </div>
-            )}
+
+                <div className='add-range-modal-footer'>
+                    <button className="bottom-close" onClick={() => handleIsOpen(!isOpen)}>Close</button>
+                    <button className="bottom-submit">Submit</button>
+                </div>
+            </div>
         </div>
     );
 }
