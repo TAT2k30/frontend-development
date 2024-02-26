@@ -1,4 +1,105 @@
-.product-print-container{
-    margin-top: 60px;
-    background-color: #eed9cb;
+.product-print-container {
+  margin-top: 60px;
+  background-color: #eed9cb;
+  hr {
+    border: dashed black 1px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .Header-image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    img {
+      width: 95%;
+      border-radius: 5px;
+      box-shadow: 0 0 6px rgba(37, 37, 37, 0.56);
+      position: relative;
+    }
+
+    .Header-image-text {
+      position: absolute;
+      top: 40%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      color: rgb(0, 0, 0);
+      text-align: center;
+      z-index: 2;
+      b {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .span {
+        font-weight: lighter;
+      }
+      .footer-Prints-button {
+        margin-top: 30px;
+        button {
+          background-color: #eed9cb;
+          border: none;
+          padding: 5px;
+          padding-left: 40px;
+          padding-right: 40px;
+          border-radius: 20px;
+          box-shadow: 0 2px 2px rgba(37, 37, 37, 0.56);
+          transition: background-color 0.3s ease;
+          &:hover {
+            background-color: #ffeee3;
+          }
+        }
+      }
+    }
+  }
+
+  .product-print-content1 {
+    padding-top: 30px;
+    text-align: center;
+    span {
+      font-size: larger;
+      font-weight: 700;
+    }
+    p {
+      font-size: small;
+      font-weight: lighter;
+    }
+  }
+  .doubleImage-print {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .doubleImage-print img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px rgba(37, 37, 37, 0.56);
+  }
+
+  .doubleImage-print-first,
+  .doubleImage-print-second {
+    flex-grow: 1;
+    margin: 0 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color: rgba(0, 0, 0, 0.624);
+      margin-bottom: 10px;
+    }
+    .prints-props {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        color: rgb(54, 107, 255);
+        font-size: 13px;
+        margin: 0;
+      }
+    }
+  }
 }

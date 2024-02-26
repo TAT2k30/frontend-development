@@ -5,6 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import imgUpload from '../../../../Assets/Image/UploadImgIcn-removebg-preview.png';
 import axios from 'axios';
 import { baseUrl } from '../../../../Assets/Data/baseUrl';
+
 function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
     const [fileProps, setFileProps] = useState([]);
     const [fileData, setFileData] = useState(null);
@@ -12,12 +13,12 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
     const inputJsonRef = useRef(null);
     const [dragOver, setDragOver] = useState(false);
     const [showProps, setShowProps] = useState(false);
-    
+
     const handleDrop = (e) => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
         handleFileUpload(file);
-        setDragOver(false); 
+        setDragOver(false);
     };
 
     const handleDragOver = (e) => {
@@ -73,7 +74,7 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
         let isValid = true;
 
         // Kiểm tra loại hình ảnh và thực hiện xác thực dựa trên loại đó
-        if (photoType === "Photo's size range adding") {
+        if (photoType === "Photo's Size range adding") {
             for (let i = 0; i < data.length; i++) {
                 const object = data[i];
                 const keys = Object.keys(object);
@@ -81,17 +82,17 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
                     errors.push(`Invalid number of properties at object ${i + 1}`);
                     isValid = false;
                 } else {
-                    if (!keys.includes('Name') || !keys.includes('Dimensions') || !keys.includes('Description')) {
+                    if (!keys.includes('Name') || !keys.includes('Acreage') || !keys.includes('Description')) {
                         errors.push(`Invalid format at object ${i + 1}`);
                         isValid = false;
                     }
                 }
             }
-        } else if (photoType === "Photo's frame range adding") {
+        } else if (photoType === "Photo's Frame range adding") {
             for (let i = 0; i < data.length; i++) {
                 const object = data[i];
                 const keys = Object.keys(object);
-                
+
 
                 if (keys.length !== 2) {
                     errors.push(`Invalid number of properties at object ${i + 1}`);
@@ -108,33 +109,33 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
         return { isValid, errors };
     };
     const handleSubmit = async () => {
-        if (photoType === "Photo's frame range adding") {
+        if (photoType === "Photo's Frame range adding") {
             const frameData = fileData.map(item => ({
                 Name: item.Name,
                 Description: item.Description
             }));
-    
-            const result = await axios.post(`${baseUrl}/Frame/createRange`, frameData);
-        } else if (photoType === "Photo's size range adding") {
+
+            await axios.post(`${baseUrl}/Frame/createRange`, frameData);
+        } else if (photoType === "Photo's Size range adding") {
             const sizeData = fileData.map(item => ({
                 Name: item.Name,
-                Dimensions: item.Dimensions,
+                Acreage: item.Acreage,
                 Description: item.Description
             }));
-    
-            const result = await axios.post(`${baseUrl}/Size/createRange`, sizeData);
-            console.log(result);
+
+            await axios.post(`${baseUrl}/Size/createRange`, sizeData);
+
         } else if (photoType === "Photo's type range adding") {
             const typeData = fileData.map(item => ({
                 Name: item.Name,
                 Dimensions: item.Dimensions,
                 Description: item.Description
             }));
-    
+
             const result = await axios.post(`${baseUrl}/Size/createRange`, typeData);
         }
     };
-    
+
     return (
         <div className='add-range-modal-container'>
             <div className='main-addRange-modal'>
@@ -153,15 +154,15 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
                     <h4>There must be only one file at the time</h4>
                     <p><b className='text-danger'>Important :</b><span>The given file must contain the <b className='text-warning'>.json</b> type at the end of fileName</span></p>
                     <div
-                        className='photo-dragDrop-file'
-                       
+                        className={`photo-dragDrop-file ${dragOver ? 'drag-over' : ''}`}
+
                         onDragOver={handleDragOver}
                         onDrop={handleDrop}
                         onDragEnter={handleDragEnter}
                         onDragLeave={handleDragLeave}
                     >
                         <div
-                            className='photo-dragDrop-dashedBox' 
+                            className='photo-dragDrop-dashedBox'
                         >
                             <div className='addRange-props'>
                                 <img src={imgUpload} alt="Upload Json File" />
@@ -203,7 +204,7 @@ function PhotoCreateRange({ handleIsOpen, isOpen, photoType }) {
 
                 <div className='add-range-modal-footer'>
                     <button className="bottom-close" onClick={() => handleIsOpen(!isOpen)}>Close</button>
-                    <button className="bottom-submit" onClick={()=>{handleSubmit()}}>Submit</button>
+                    <button className="bottom-submit" onClick={() => { handleSubmit() }}>Submit</button>
                 </div>
             </div>
         </div>

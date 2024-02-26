@@ -10,6 +10,7 @@ import Login from '../../Login/UserLogin';
 import SignUp from '../../SignUp/UserSignUp';
 import Create from '../../Create/UserCreateImage';
 import Print from '../../ProductPages/Prints/Print';
+import PrintSetting from '../../ProductPages/Prints/PrinttingDetails/PrintSetting.js';
 
 function UserMain(props) {
     const [content, setContent] = useState(null);
@@ -38,7 +39,10 @@ function UserMain(props) {
                 setContent(<Create />);
                 break;
             case UserPath.ProductPrint:
-                setContent(<Print/>);
+                setContent(<Print />);
+                break;
+            case UserPath.ProductPrintSetting:
+                setContent(<PrintSetting />);
                 break;
             default:
                 setContent(<Content />);
@@ -54,7 +58,7 @@ function UserMain(props) {
 
     return (
         <div className={`user-container`}>
-            <div className='user-header'  style={showShadow ? {'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)', 'backgroundColor': '#eed9cbe8'} : {}} >
+            <div className='user-header' style={showShadow ? { 'boxShadow': '0 0 10px rgba(0, 0, 0, 0.2)', 'backgroundColor': '#eed9cbe8' } : {}} >
                 <Header />
             </div>
             <div className='user-main-content'>

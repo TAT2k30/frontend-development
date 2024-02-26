@@ -1,0 +1,36 @@
+.photo-prints-setting {
+  display: flex;
+  margin-top: 60px;
+}
+
+.left-side {
+    border-radius: 10px;
+  width: 60%;
+  text-align: center;
+  background-color:  #fdf7f3;
+  margin-right: 5px;
+  margin-left: 10px;
+  .chose-img-option{
+    height: 70vh;
+    button{
+        padding: 20px;
+        margin-top: 25vh;
+        height: 100px;
+        border-radius: 20px;
+        border: solid green;
+        background-color: rgba(195, 255, 235, 0.785);
+    }
+  }
+  .goTo-createImg{
+
+  }
+}
+
+.right-side {
+    border-radius: 20px;
+  width: 40%;
+  text-align: center;
+  background-color:#fdf7f3;
+  margin-right: 10px;
+  margin-left: 5px;
+}

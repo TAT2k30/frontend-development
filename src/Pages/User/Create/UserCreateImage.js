@@ -20,7 +20,6 @@ function UserCreateImage(props) {
     const fetchUserImages = async () => {
       try {
         const response = await axios.post(`${baseUrl}/Image/${token.UserId}`);
-        console.log(response.data.$values)
         setUserImgUrl(response.data.data.$values);
       } catch (error) {
         console.error('Error fetching user images:', error);

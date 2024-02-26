@@ -7,7 +7,6 @@ import { faEye, faEyeSlash, faUpLong, faDownLong, faPlus } from '@fortawesome/fr
 import './ImageSize.scss';
 import Pagination from '../../../../Services/Pagination/Pagination';
 import LoadingImg from '../../../../Services/Loading/LoadingImg';
-import { size } from 'polished';
 import PhotoCreateRange from '../PhotoPopup/PhotoCreateRange';
 
 function ImageSize(props) {
@@ -16,6 +15,7 @@ function ImageSize(props) {
     const [postPerPage, setPostPerPage] = useState(8);
     const [showContent, setShowContent] = useState(false);
     const [isOpen , setIsOpen] = useState(false);
+
     useEffect(() => {
         const getAllPaperSize = async () => {
             try {
@@ -38,20 +38,18 @@ function ImageSize(props) {
     };
 
     return (
-        <>
         <div className="size-card-container">
             <div className='size-intro' style={showContent ? {borderBottomLeftRadius:0,borderBottomRightRadius:0 }:{}}>
-            <div className='left-size-intro'>
+                <div className='left-size-intro'>
                     <h3>Size list</h3>
                     <button className='size-button-addRange' onClick={()=>{setIsOpen(!isOpen)}}><FontAwesomeIcon icon={faPlus}/></button>
                 </div>
-                
                 <span>There are {sizeResult.length} sizes have been added</span>
                 <button className='button-size' onClick={toggleContent}><FontAwesomeIcon icon={showContent ? faUpLong : faDownLong} /></button>
             </div>
             {showContent && (
                 <>
-                    <div className="size-card-list" style={showContent ? { transition: "transition: transform 0.3s ease, opacity 0.3s ease"} : { transition: "transition: transform 0.3s ease, opacity 0.3s ease"}}>
+                    <div className="size-card-list">
                         {currentpost.length > 0 ? (
                             currentpost.map((size, index) => (
                                 <div className="size-card" key={index}>
@@ -65,13 +63,14 @@ function ImageSize(props) {
                                         </div>
                                         <div className="size-card-body">
                                             <div className="size-card-content">
-                                                <p><strong><b>Dimensions:</b></strong><br />- {size.dimensions}</p>
+                                                <p><strong><b>Acreage:</b></strong><br />- {size.acreage} cm</p>
                                                 <p><strong><b>Description:</b></strong><br />- {size.description}</p>
                                                 <p><strong><b>Status:</b></strong> {size.status ? "Public" : "Hidden"}</p>
                                             </div>
                                         </div>
                                         <div className="size-card-footer">
-                                            <input type="button" value="Edit" />
+                                           <button>Change status</button>
+                                           <button>Apply changes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,10 +84,8 @@ function ImageSize(props) {
                     </div>
                 </>
             )}
-    
+            {isOpen && <PhotoCreateRange handleIsOpen={setIsOpen} isOpen={isOpen} photoType={"Photo's Size range adding"}/>}
         </div>
-        {isOpen && <PhotoCreateRange handleIsOpen={setIsOpen} isOpen={isOpen} photoType={"Photo's Size range adding"}/>}
-        </>
     );
 }
 

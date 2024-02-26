@@ -15,7 +15,7 @@
     padding: 10px;
     background-color: #8dcd7e;
     border-radius: 10px;
-    .left-size-intro{
+    .left-size-intro {
       display: flex;
       align-items: center;
     }
@@ -118,7 +118,7 @@
           font-size: 14px;
           color: #000000;
           background-color: #88c5efe7;
-          
+
           .size-card-content {
             font-size: larger;
           }
@@ -128,8 +128,9 @@
           padding: 10px;
           border-top: 1px solid #e0e0e0;
           text-align: right;
-
-          input[type='button'] {
+          display: flex;
+          justify-content: space-between;
+          button {
             padding: 8px 16px;
             background-color: #3498db;
             color: #ffffff;
