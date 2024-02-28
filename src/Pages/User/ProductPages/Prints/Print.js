@@ -23,7 +23,6 @@ function Print(props) {
             try {
                 const response = await axios.get(`${baseUrl}/Size`);
                 setSizeData(response.data.data.$values);
-                console.log(response.data.data.$values)
             } catch (error) {
                 console.error("Error fetching size data", error);
             }
@@ -33,10 +32,10 @@ function Print(props) {
     }, []);
 
     const filteredPrintsData = printData.filter(data => data.name === "Prints");
-    const standardPrintsCollection = ["10 x 13.5", "10 x 15", "15 x 20", "20 x25", "20 x 30"];
-    const collagePrintsCollection = ["10 x 15", "15 x 20", "20 x 25", "20 x 30",];
+    const standardPrintsCollection = ["10 x 13.5", "10 x 15", "15 x 20", "20 x 25", "20 x 30"];
+    const collagePrintsCollection = ["10 x 15", "13 x 18","15 x 20",  "20 x 25", "20 x 30",];
     const standardPrintsPrices = {
-        "10 x 13.5": 0.25,
+        "10 x 13.5" : 0.25,
         "10 x 15": 0.25,
         "15 x 20": 1.95,
         "20 x 25": 3.45,
@@ -44,9 +43,10 @@ function Print(props) {
     };
     const collagePrintsPrices = {
         "10 x 15": 0.29,
-        "15 x 20": 0.69,
+        "13 x 18": 0.69,
+        "15 x 20": 2.45,
         "20 x 25": 3.45,
-        "20 x 30": 3.65
+        "20 x 30": 3.95
     };
 
     return (
@@ -58,7 +58,7 @@ function Print(props) {
                         <span key={data.id}>{data.description}</span>
                     ))}
                     <div className='footer-Prints-button'>
-                        <button onClick={()=>{navigate("/print/printSetting")}}>Order prints now</button>
+                        <button onClick={() => { navigate("/print/printSetting") }}>Order prints now</button>
                     </div>
                 </div>
                 <img src={HeaderPrintPhoto} />
@@ -80,10 +80,15 @@ function Print(props) {
                                 if (standardPrintsCollection.includes(data.acreage)) {
                                     return (
                                         <div key={data.id}>
-                                            <p><Link to="/print/printSetting">{data.acreage}</Link>cm - <span style={{color: "green"}}>${standardPrintsPrices[data.acreage]}</span>/pic</p>
+                                            <p><Link to={`/print/printSetting`}
+                                                state={{
+                                                    size: data,
+                                                    price: standardPrintsPrices
+                                                }
+                                                }>{data.acreage}</Link>cm - <span style={{ color: "green" }}>${standardPrintsPrices[data.acreage]}</span>/pic</p>
                                         </div>
                                     );
-                                } 
+                                }
                             })}
 
                         </div>
@@ -95,13 +100,13 @@ function Print(props) {
                         </div>
                         <div className='prints-props'>
                             {sizeData.map(data => {
-                               if (collagePrintsCollection.includes(data.acreage)) {
-                                return (
-                                    <div key={data.id}>
-                                        <p><Link to="">{data.acreage}</Link>cm  - <span style={{color: "green"}}>${collagePrintsPrices[data.acreage]}</span>/pic</p>
-                                    </div>
-                                );
-                            }
+                                if (collagePrintsCollection.includes(data.acreage)) {
+                                    return (
+                                        <div key={data.id}>
+                                            <p><Link to="">{data.acreage}</Link>cm  - <span style={{ color: "green" }}>${collagePrintsPrices[data.acreage]}</span>/pic</p>
+                                        </div>
+                                    );
+                                }
                             })}
                         </div>
                     </div>

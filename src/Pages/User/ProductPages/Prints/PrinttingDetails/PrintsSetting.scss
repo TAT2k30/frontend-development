@@ -4,33 +4,109 @@
 }
 
 .left-side {
-    border-radius: 10px;
+  border-radius: 10px;
   width: 60%;
   text-align: center;
-  background-color:  #fdf7f3;
+  background-color: #fdf7f3;
   margin-right: 5px;
   margin-left: 10px;
-  .chose-img-option{
-    height: 70vh;
-    button{
-        padding: 20px;
-        margin-top: 25vh;
-        height: 100px;
-        border-radius: 20px;
-        border: solid green;
-        background-color: rgba(195, 255, 235, 0.785);
+  height: 70vh;
+  .print-editor {
+    background-color: red;
+
+    align-items: center;
+
+    .print-editor-imgContainer {
+      img {
+        width: 70%;
+      }
+    }
+    .print-editor-main {
+      background-color: #6bb8bb;
     }
   }
-  .goTo-createImg{
-
+  .chose-img-option {
+    button {
+      padding: 20px;
+      margin-top: 25vh;
+      height: 100px;
+      border-radius: 20px;
+      border: solid green;
+      background-color: rgba(195, 255, 235, 0.785);
+    }
+  }
+  .goTo-createImg {
+    height: 70vh;
+    button {
+      padding: 20px;
+      margin-top: 25vh;
+      height: 100px;
+      border-radius: 20px;
+      border: solid green;
+      background-color: rgba(195, 255, 235, 0.785);
+    }
   }
 }
 
 .right-side {
-    border-radius: 20px;
+  border-radius: 20px;
   width: 40%;
   text-align: center;
-  background-color:#fdf7f3;
+  background-color: #fdf7f3;
   margin-right: 10px;
   margin-left: 5px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .right-side-header {
+    height: 40px;
+    background-color: rgb(234, 230, 230);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: rgba(40, 40, 40, 0.918);
+    font-size: x-large;
+    font-weight: 400;
+  }
+  .right-side-content {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-size: smaller;
+      width: 150px;
+      height: 60px;
+      margin: 0;
+      border: none;
+      border-radius: 10px;
+      background-color: #c4e4e5;
+      color: #393939;
+      cursor: pointer;
+
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #6bb8bb;
+      }
+    }
+  }
+  .right-side-footer {
+    margin: 10px;
+    display: flex;
+
+
+    .right-side-footerOptions {
+      padding-left: 50px;
+       button{
+        margin-right: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+       }
+    }
+  }
 }
