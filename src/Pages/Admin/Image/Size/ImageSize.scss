@@ -66,22 +66,56 @@
     }
 
     .size-card {
+      height: 230px;
+
       position: relative;
       width: calc(25% - 20px);
       margin-bottom: 20px;
       overflow-y: hidden;
       border-radius: 8px;
       box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
-
+      background-color: #b4ffa7;
+      .size-card-cover {
+        height: 230px;
+        background-color: #e3e3e3;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        .size-card-cover-header {
+          margin-right: 40px;
+        }
+        .size-card-cover-props {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          b {
+            margin-left: 5px;
+            font-size: larger;
+          }
+          .size-card-cover-content {
+            background-color: #9efcff;
+            border: dashed 2px;
+          }
+          .size-card-cover-content {
+            position: relative;
+            background-color: #9efcff;
+            border-radius: dashed 2px;
+     
+          }
+         
+        }
+        .size-card-cover-footer {
+          margin-top: 4px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+      }
       &:hover {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.458);
-      }
-
-      .size-card-image {
-        width: 100%;
-        height: 200px;
-        background-size: cover;
-        border-radius: 8px 8px 0 0;
       }
 
       .status-icon {
@@ -96,13 +130,12 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.8);
-        transition: background-color 0.3s ease;
+        height: 100%;
         transform: translateY(100%);
         opacity: 0;
-        border-radius: 0 0 8px 8px;
-        max-height: 200px; /* Điều chỉnh chiều cao tối đa của chi tiết */
-        overflow-y: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        border-radius: 8px;
+        overflow: auto;
         .size-card-header {
           padding: 10px;
           border-bottom: 1px solid #e0e0e0;
@@ -126,6 +159,7 @@
 
         .size-card-footer {
           padding: 10px;
+          background-color: #3498db;
           border-top: 1px solid #e0e0e0;
           text-align: right;
           display: flex;

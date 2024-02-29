@@ -7,6 +7,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import PopupImage from '../../PopupImage/PopupImage';
 
 function PrintSetting(props) {
+    const standardPrintsPrices = {
+        "10 x 13.5": 0.25,
+        "10 x 15": 0.25,
+        "15 x 20": 1.95,
+        "20 x 25": 3.45,
+        "20 x 30": 3.65
+    };
     const standardPrintsCollection = ["10 x 13.5", "10 x 15", "15 x 20", "20 x 25", "20 x 30"];
     const navigate = useNavigate();
     const location = useLocation();
@@ -17,7 +24,6 @@ function PrintSetting(props) {
     const [showMore, setShowMore] = useState(false);
     const [choosenPhoto, setChoosenPhoto] = useState([]);
     const [userImg, setUserImages] = useState([]);
-    const [activeIndex, setActiveIndex] = useState(null);
     const [commonSizeData, setCommonSizeData] = useState([]);
     const sizePassedData = location.state ? location.state : null;
 
@@ -50,7 +56,6 @@ function PrintSetting(props) {
     useEffect(() => {
         const filteredSize = headerSize.filter(size => size.name === (sizePassedData && sizePassedData.size && sizePassedData.size.name));
         setCommonSizeData(filteredSize);
-
     }, [location.pathname, headerSize, sizePassedData]);
 
     const handlePopupClose = () => {
@@ -61,8 +66,8 @@ function PrintSetting(props) {
         setShowMore(!showMore);
     };
 
-    const handleSizeChoosen = (index, name) => {
-        setActiveIndex(index);
+    const handleSizeChoosen = (name) => {
+
         const selectedSize = headerSize.find(size => size.name === name);
         if (selectedSize) {
             setCommonSizeData([selectedSize]);
@@ -102,7 +107,11 @@ function PrintSetting(props) {
             <div className="right-side">
                 <div className='right-side-header'>
                     {commonSizeData && commonSizeData.length > 0 ?
-                        <span>{commonSizeData[0].name} Prints // Starting at <a style={{ color: "green" }}> ${sizePassedData && sizePassedData.price && sizePassedData.price[commonSizeData[0].acreage]}</a> per photo</span>
+                        <span>{commonSizeData[0].name} Prints // Starting at <a style={{ color: "green" }}> $
+                            {sizePassedData && sizePassedData.price &&
+                                sizePassedData.price[commonSizeData[0].acreage] ?
+                                sizePassedData.price[commonSizeData[0].acreage] :
+                                standardPrintsPrices[commonSizeData[0].acreage]}</a> per photo</span>
                         :
                         <span>No size chosen</span>}
                 </div>
@@ -117,15 +126,18 @@ function PrintSetting(props) {
                                         return (
                                             <button
                                                 key={index}
-                                                onClick={() => handleSizeChoosen(index, size.name)}
-                                                style={{ backgroundColor: activeIndex === index ? "#6bb8bb" : "#c4e4e5" }}
+                                                onClick={() => handleSizeChoosen(size.name)}
+
+                                                style={{
+                                                    backgroundColor: commonSizeData.some((data) => data.name === size.name) ? "#6bb8bb" : "#c4e4e5"
+                                                }}
                                             >
                                                 {size.acreage} cm<br />
                                                 ({size.name})
                                             </button>
                                         );
                                     }
-                                    return null; 
+                                    return null;
                                 })
                             }
 
@@ -148,11 +160,11 @@ function PrintSetting(props) {
                     </table>
                 </div>
                 <div className='right-side-footer'>
-                            <b>Finish : </b>
-                            <div className='right-side-footerOptions'>
-                                    <button>Glossy</button>
-                                    <button>Matte</button>
-                            </div>
+                    <b>Finish : </b>
+                    <div className='right-side-footerOptions'>
+                        <button>Glossy</button>
+                        <button>Matte</button>
+                    </div>
                 </div>
             </div>
         </div >
