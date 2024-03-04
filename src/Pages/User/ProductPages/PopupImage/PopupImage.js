@@ -5,14 +5,24 @@ import axios from 'axios';
 import { baseUrl } from '../../../../Assets/Data/baseUrl';
 import { DataContext } from '../../../../Assets/Data/DataContext';
 
-function PopupImage({handleInputPhoto,showPopup,onClose}) {
+function PopupImage({ handleInputPhoto, showPopup, onClose, handleSaveData }) {
     const [userImg, setUserImg] = useState([]);
     const { token } = useContext(DataContext);
     useEffect(() => {
         const getAllUserImg = async () => {
-            const response = await axios.post(`${baseUrl}/Image/${token.UserId}`);
-            setUserImg(response.data.data.$values);
-        }
+            try {
+                const response = await axios.post(`${baseUrl}/Image/${token.UserId}`);
+                const userImages = response.data.data.$values.map(image => {
+                    return {
+                        imageUrl: `data:image/jpeg;base64, ${image.base64Image}`,
+                        id: image.id
+                    };
+                });
+                setUserImg(userImages); 
+            } catch (error) {
+                console.error("Error fetching user images:", error);
+            }
+        };
         getAllUserImg();
     }, [])
     if (!showPopup) {
@@ -28,7 +38,7 @@ function PopupImage({handleInputPhoto,showPopup,onClose}) {
                 </div>
 
                 {userImg.map((img, index) => (
-                  <img key={index} src={img.imageUrl} alt={`User Image ${index + 1}`} className='img-thumbnail' onClick={()=>{handleInputPhoto(img.imageUrl)}} />
+                    <img key={index} src={img.imageUrl} alt={`User Image ${index + 1}`} className='img-thumbnail' onClick={() => { handleInputPhoto(img.imageUrl); handleSaveData(img) }} />
                 ))}
 
             </div>

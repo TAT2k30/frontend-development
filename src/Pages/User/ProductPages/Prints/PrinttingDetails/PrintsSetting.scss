@@ -10,21 +10,242 @@
   background-color: #fdf7f3;
   margin-right: 5px;
   margin-left: 10px;
-  height: 70vh;
+  height: 75vh;
+  margin-bottom: 10px;
   .print-editor {
-    background-color: red;
-
     align-items: center;
+    display: flex;
+    flex-direction: column;
 
-    .print-editor-imgContainer {
-      img {
-        width: 70%;
+    .print-editor-card {
+      padding: 28px;
+      width: 100%;
+      height: 80%;
+      justify-content: center;
+
+      .print-editor-card-header {
+        margin-top: -20px;
+        h2 {
+          font-size: 24px;
+        }
+      }
+
+      .print-editor-card-body {
+        justify-content: space-between;
+        width: 100%;
+        .print-editor-card-body-sideBar {
+          width: 100%;
+          display: flex;
+          .sideBar-body {
+            padding: 16px;
+            background-color: #dcdcdc7e;
+            border-radius: 8px;
+            width: 50%;
+
+            span {
+              font-weight: bold;
+              display: block;
+              margin-bottom: 8px;
+            }
+
+            .sideBar-filter-section {
+              border: 2px solid #676767;
+              border-radius: 8px;
+              padding: 16px;
+              text-align: center;
+              justify-content: center;
+
+              .sideBar-filterKey {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: -8px;
+
+                button {
+                  padding-left: 10px;
+                  border-radius: 4px;
+                  flex: 0 0 calc(50% - 10px);
+                  width: 50%;
+                  background-color: transparent;
+                  border: none;
+                  cursor: pointer;
+                  text-align: center;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 5px;
+                  margin-bottom: 8px;
+                  display: block;
+                  text-align: left;
+                  transition: background-color 0.3s ease;
+                  background-color: #f6fffe;
+                  margin-left: 10px;
+                  border: solid 0.2px black;
+                  &:hover {
+                    background-color: #adadad;
+                  }
+                  span {
+                    margin: auto;
+                    font-weight: 400;
+                    text-align: center;
+                  }
+                }
+              }
+
+              .sideBar-rotateFlit {
+                button {
+                  border: solid 0.2px black;
+                  background-color: #eafffd;
+                  font-size: larger;
+                  margin: 5px;
+                  padding: 2px 10px;
+                  border-radius: 4px;
+                  transition: background-color 0.3s ease;
+                  &:hover {
+                    background-color: #adadad;
+                  }
+                }
+              }
+            }
+
+            .sideBar-filter-slider {
+              margin-top: 16px;
+
+              .label-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 8px;
+
+                label {
+                  font-weight: bold;
+                }
+
+                span {
+                  font-weight: bold;
+                }
+              }
+
+              input[type="range"] {
+                width: 100%;
+                height: 8px;
+                -webkit-appearance: none;
+                appearance: none;
+                border-radius: 10px;
+                background: linear-gradient(to right, #4caf50, #4caf50);
+                outline: none;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+                margin-bottom: 16px;
+
+                &::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  background: #ffffff;
+                  border: 2px solid #4caf50;
+                  cursor: pointer;
+                  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+                }
+
+                &::-moz-range-thumb {
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  background: #ffffff;
+                  border: 2px solid #4caf50;
+                  cursor: pointer;
+                  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+                }
+
+                &::-webkit-slider-runnable-track {
+                  background: #d3d3d3;
+                  border-radius: 10px;
+                }
+
+                &::-moz-range-track {
+                  background: #d3d3d3;
+                  border-radius: 10px;
+                }
+              }
+            }
+          }
+
+          .print-editor-photo {
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            width: 100%;
+            margin-left: 10px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #dcdcdc7e;
+            padding-bottom: 40px;
+
+            img {
+              margin-top: 60px;
+              max-width: 80%;
+              max-height: 100%;
+              object-fit: contain;
+              border: dashed black 2px;
+            }
+            .photo-editor-optional {
+              display: flex;
+              justify-content: space-between;
+              button {
+                background-color: #d1d1d1;
+                border-radius: 50%;
+                transition: background-color 0.3s, color 0.3s;
+                margin-left: 15px;
+                margin-right: 15px;
+                &:hover {
+                  background-color: #000000;
+                  color: #fff;
+                }
+              }
+            }
+            .print-editor-photo-footer {
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              background-color: #c1c4c1;
+              padding: 20px;
+              border-bottom-left-radius: 20px;
+              border-bottom-right-radius: 20px;
+              height: 70px;
+
+              button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #fff;
+                color: #000000;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                margin-right: 20px;
+              }
+              .btn-save {
+                background-color: rgb(57, 177, 61);
+                &:hover {
+                  background-color: rgb(12, 211, 12);
+                }
+              }
+              .btn-reset {
+                background-color: rgba(244, 60, 60, 0.784);
+                &:hover {
+                  background-color: red;
+                }
+              }
+            }
+          }
+        }
       }
     }
-    .print-editor-main {
-      background-color: #6bb8bb;
-    }
   }
+
   .chose-img-option {
     button {
       padding: 20px;
@@ -55,7 +276,7 @@
   background-color: #fdf7f3;
   margin-right: 10px;
   margin-left: 5px;
-  max-height: 70vh;
+  max-height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
   .right-side-header {
@@ -99,14 +320,43 @@
     margin: 10px;
     display: flex;
 
-
     .right-side-footerOptions {
       padding-left: 50px;
-       button{
+      button {
         margin-right: 20px;
         padding-left: 50px;
         padding-right: 50px;
-       }
+        border-radius: 20px;
+        background-color: #c4e4e5;
+        transition: background-color 0.3s ease;
+        border: none;
+        &:hover {
+          background-color: #6bb8bb;
+        }
+      }
+    }
+  }
+  .right-side-frameOptions {
+
+    button {
+      margin-right: 20px;
+      padding-left: 50px;
+      padding-right: 50px;
+      border-radius: 20px;
+      background-color: #c4e4e5;
+      transition: background-color 0.3s ease;
+      border: none;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      &:hover {
+        background-color: #6bb8bb;
+      }
+    }
+  }
+  .total-money-pay{
+    button{
+      background-color: rgb(235, 245, 221);
+      margin-left: 100px;
     }
   }
 }
