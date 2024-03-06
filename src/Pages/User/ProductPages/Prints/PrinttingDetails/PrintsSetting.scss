@@ -353,6 +353,19 @@
       }
     }
   }
+  .input-number{
+    margin-top: 10px;
+    span{
+      margin-right: 20px;
+    }
+    input{
+      border: none;
+      background-color: rgb(185, 185, 187);
+      width: 100px;
+      height: 40px;
+      color: #fff;
+    }
+  }
   .total-money-pay{
     button{
       background-color: rgb(235, 245, 221);

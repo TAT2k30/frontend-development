@@ -14,7 +14,6 @@ import storeData from '../../../../../Services/SavedPropsLinkedList/LinkedList';
 function PrintSetting(props) {
     const navigate = useNavigate();
     const location = useLocation();
-    const { token } = useContext(DataContext);
     const [haveImg, setHaveImg] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [headerSize, setHeaderSize] = useState([]);
@@ -31,6 +30,9 @@ function PrintSetting(props) {
     const canvasRef = useRef(null);
     const [details, setDetails] = useState('')
     const [linkedListData, setLinkedListData] = useState([]);
+    const [choosenFrame, setChoosenFrame] = useState();
+    const [photoAmount, setPhotoAmount] = useState();
+    const { token } = useContext(DataContext);
     useEffect(() => {
         const getAllUserImg = async () => {
             try {
@@ -121,13 +123,14 @@ function PrintSetting(props) {
         }
     };
 
-    const handleFrameChoosen = (name) => {
-        const price = calculateFramePrice(name);
+    const handleFrameChoosen = (frame) => {
+        const price = calculateFramePrice(frame.name);
         if (price) {
             setFramePriceData({
-                [name]: price
+                [frame.name]: price
             });
         }
+        setChoosenFrame(frame);
     };
 
 
@@ -138,6 +141,7 @@ function PrintSetting(props) {
         setMaterialPriceData({
             [material]: price
         });
+
     };
 
     const handleRangeChange = (e, type) => {
@@ -265,21 +269,17 @@ function PrintSetting(props) {
         "20 x 30": 3.65
     };
     const totalPriceCaculation = (framePriceData) => {
-        if (!isEmptyArray(framePriceData)) {
+        if (!isEmptyArray(framePriceData) && photoAmount !== undefined) {
             const frameTotalPrice = Object.values(framePriceData).reduce((acc, curr) => acc + curr, 0);
-            if (frameTotalPrice === 0) {
-                // Nếu giá frame là 0, trả về tổng giá của các thành phần khác
+            if (frameTotalPrice === 0 || photoAmount === 0) {
                 return Object.values(priceData).reduce((acc, curr) => acc + curr, 0) + Object.values(materialPriceData).reduce((acc, curr) => acc + curr, 0);
             } else {
-                // Nếu giá frame khác 0, tính tổng giá của tất cả các thành phần
-                return (Object.values(priceData).reduce((acc, curr) => acc + curr, 0) + Object.values(materialPriceData).reduce((acc, curr) => acc + curr, 0)) * frameTotalPrice;
+                return (Object.values(priceData).reduce((acc, curr) => acc + curr, 0) + Object.values(materialPriceData).reduce((acc, curr) => acc + curr, 0)) * frameTotalPrice * photoAmount;
             }
         } else {
-            // Nếu không có giá frame, trả về tổng giá của các thành phần khác
             return Object.values(priceData).reduce((acc, curr) => acc + curr, 0) + Object.values(materialPriceData).reduce((acc, curr) => acc + curr, 0);
         }
     }
-
 
     const standardPrintsCollection = Object.keys(standardPrintsPrices);
 
@@ -304,7 +304,41 @@ function PrintSetting(props) {
         link.click();
     };
 
-  
+
+    const handleSubmitOrder = async () => {
+        const selectedData = {
+            sizeId: commonSizeData[0].id,
+            materialId: materialData,
+            frameId: parseInt(choosenFrame.id),
+            totalAmount: parseInt(photoAmount),
+            price: parseFloat(totalPriceCaculation(framePriceData))
+        };
+        console.log(selectedData)
+       
+        try {
+            
+            const formData = new FormData();
+            formData.append("SizeId", selectedData.sizeId);
+            formData.append("FrameId", selectedData.frameId);
+            formData.append("MaterialName", selectedData.materialId);
+            formData.append("TotalPrice", selectedData.price);
+            formData.append("PhotoAmount", selectedData.totalAmount);
+            formData.append("UserId", token.UserId);
+            const response = await axios.post(`${baseUrl}/OrderItem`, formData);
+
+            if (response.status === 200) {
+                alert("Order successfully placed");
+                console.log(response)
+            } else {
+                alert("Failed to place order");
+            }
+        } catch (error) {
+            console.error("Error submitting order:", error);
+            alert("An error occurred while submitting the order");
+        }
+    };
+
+
 
     return (
         <div className="photo-prints-setting">
@@ -441,8 +475,8 @@ function PrintSetting(props) {
                 <div className='right-side-footer'>
                     <b>Finish : </b>
                     <div className='right-side-footerOptions'>
-                        <button onClick={() => handleMaterialChoosen('Glossy')}>Glossy</button>
-                        <button onClick={() => handleMaterialChoosen('Matte')}>Matte</button>
+                        <button onClick={() => handleMaterialChoosen('Glossy')} style={materialData === "Glossy" ? { backgroundColor: "#adadad" } : { backgroundColor: "#f6fffe" }}><b>Glossy</b></button>
+                        <button onClick={() => handleMaterialChoosen('Matte')} style={materialData === "Matte" ? { backgroundColor: "#adadad" } : { backgroundColor: "#f6fffe" }}><b>Matte</b></button>
                     </div>
                 </div>
                 <div className='right-side-frameOption'>
@@ -450,18 +484,27 @@ function PrintSetting(props) {
                     <div className='right-side-frameOptions'>
                         {frameData.length > 0 ?
                             frameData.map((frame, index) => (
-                                <button key={index} onClick={() => handleFrameChoosen(frame.name)}>{frame.name}</button>
+                                <button key={index} onClick={() => handleFrameChoosen(frame)} style={{
+                                    backgroundColor: choosenFrame && frame.name === choosenFrame.name ? "#6bb8bb" : "#c4e4e5"
+                                }}>{frame.name}</button>
                             )) :
                             <span>No frame added in the database</span>
                         }
+                    </div>
+                    <hr />
+                    <div className='input-number'>
+                        <span>Total amount</span>
+                        <input type='number' onChange={(e) => { setPhotoAmount(e.target.value) }} className='' />
                     </div>
                 </div>
 
                 <hr />
                 <div className='total-money-pay'>
                     <b>Total money : </b><span style={{ color: "green" }}><b>{totalPriceCaculation(framePriceData)}$</b></span>
-                    <button>Order now</button>
+                    <button onClick={handleSubmitOrder}>Order now</button>
+
                 </div>
+
             </div>
         </div >
     );
