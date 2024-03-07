@@ -29,7 +29,7 @@ function PrintSetting(props) {
     const sizePassedData = location.state ? location.state : null;
     const canvasRef = useRef(null);
     const [details, setDetails] = useState('')
-    const [linkedListData, setLinkedListData] = useState([]);
+    const [saveId, setSaveId] = useState([]);
     const [choosenFrame, setChoosenFrame] = useState();
     const [photoAmount, setPhotoAmount] = useState();
     const { token } = useContext(DataContext);
@@ -205,22 +205,22 @@ function PrintSetting(props) {
                 return 0;
         }
     };
-    const setUpDataInLinkedList = (data) => {
-        const initalData = {
-            image: data && data.imageUrl ? data.imageUrl : null,
-            brightness: 100,
-            grayscale: 0,
-            sepia: 0,
-            saturate: 100,
-            contrast: 100,
-            hueRotate: 0,
-            rotate: 0,
-            vartical: 1,
-            horizental: 1
-        }
-        setLinkedListData(initalData);
-        storeData.insert(initalData)
-    }
+    // const setUpDataInLinkedList = (data) => {
+    //     const initalData = {
+    //         image: data && data.imageUrl ? data.imageUrl : null,
+    //         brightness: 100,
+    //         grayscale: 0,
+    //         sepia: 0,
+    //         saturate: 100,
+    //         contrast: 100,
+    //         hueRotate: 0,
+    //         rotate: 0,
+    //         vartical: 1,
+    //         horizental: 1
+    //     }
+    //     setLinkedListData(initalData);
+    //     storeData.insert(initalData)
+    // }
     const filterElement = [
         { name: 'Brightness', type: 'brightness', maxValue: 200 },
         { name: 'GrayScale', type: 'grayscale', maxValue: 200 },
@@ -306,18 +306,42 @@ function PrintSetting(props) {
 
 
     const handleSubmitOrder = async () => {
+        if (!choosenPhoto) {
+            alert("Please choose an uploaded photo.");
+            return;
+        }
+
+        if (!photoAmount || isNaN(photoAmount) || photoAmount <= 0) {
+            alert("Please provide a valid photo amount.");
+            return;
+        }
+
+        if (!commonSizeData || commonSizeData.length === 0) {
+            alert("Please choose a size.");
+            return;
+        }
+
+        if (!materialData) {
+            alert("Please choose a material.");
+            return;
+        }
+
+        if (!choosenFrame) {
+            alert("Please choose a frame.");
+            return;
+        }
+
         const selectedData = {
+            imgId: saveId,
             sizeId: commonSizeData[0].id,
             materialId: materialData,
             frameId: parseInt(choosenFrame.id),
             totalAmount: parseInt(photoAmount),
             price: parseFloat(totalPriceCaculation(framePriceData))
         };
-        console.log(selectedData)
-       
         try {
-            
-            const formData = new FormData();
+            var formData = new FormData();
+            formData.append("ImgId", selectedData.imgId);
             formData.append("SizeId", selectedData.sizeId);
             formData.append("FrameId", selectedData.frameId);
             formData.append("MaterialName", selectedData.materialId);
@@ -337,6 +361,7 @@ function PrintSetting(props) {
             alert("An error occurred while submitting the order");
         }
     };
+
 
 
 
@@ -413,7 +438,7 @@ function PrintSetting(props) {
                 ) : (haveImg ? (
                     <div className='chose-img-option'>
                         <button onClick={() => setShowPopup(true)}>Choose your uploaded image</button>
-                        {showPopup && <PopupImage showPopup={showPopup} onClose={handlePopupClose} handleInputPhoto={setChoosenPhoto} handleSaveData={setUpDataInLinkedList} />}
+                        {showPopup && <PopupImage showPopup={showPopup} onClose={handlePopupClose} handleInputPhoto={setChoosenPhoto} handleSaveId={setSaveId} />}
                     </div>
                 ) : (
                     <div className='goTo-createImg'>

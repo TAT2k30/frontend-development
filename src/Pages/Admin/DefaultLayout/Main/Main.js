@@ -13,6 +13,7 @@ import Image from '../../Image/Image';
 //Product
 import Product from '../../Product/Product';
 import { AdminPath } from '../../../../Routes/routerList';
+import Order from '../../Order/Order';
 
 
 function Main(props) {
@@ -30,10 +31,13 @@ function Main(props) {
                 setContent(<ListUser />);
                 break;
             case AdminPath.Image:
-                setContent(<Image/>);
+                setContent(<Image />);
                 break;
             case AdminPath.Product:
                 setContent(<Product />);
+                break;
+            case AdminPath.Order:
+                setContent(<Order />);
                 break;
             default:
                 setContent(<DataAnalytic />);

@@ -1,25 +1,13 @@
-.userDetail-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #18191A;
-}
-
-.user-detail-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 80vh; 
-}
-
+/* User detail card */
 .user-detail-card {
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
-  background-color: #242526;
-  color: #fff;
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   .user-avatar {
     width: 150px;
@@ -28,20 +16,107 @@
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .card-title {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #333;
   }
 
   .card-text {
     font-size: 18px;
     line-height: 1.6;
+    color: #666;
   }
 
-  .btn-primary {
-    font-size: 16px;
-    margin-top: 20px;
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* User detail form */
+.userDetail-form {
+  display: flex;
+  margin-top: 60px;
+  width: 95%;
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  /* User detail container */
+  .user-detail-container {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  /* Order place container */
+  .order-place {
+    flex: 3;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    /* Order header */
+    .order-header {
+      border-bottom: 2px solid #333;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    /* Order list */
+    .order-list {
+      .order-props {
+        display: flex;
+
+        background-color: #b7b7b7;
+        .order-props-leftSide {
+          flex: 70%;
+        }
+
+        .order-props-rightSide {
+          flex: 30%;
+        }
+      }
+
+      /* Order table */
+      .order-list-table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th,
+        td {
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  /* Order info */
+  .order-info {
+    display: flex;
+    flex-wrap: wrap;
+
+    .order-info-item {
+      flex-basis: 50%;
+      padding: 5px;
+    }
   }
 }

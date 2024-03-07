@@ -5,7 +5,7 @@ import axios from 'axios';
 import { baseUrl } from '../../../../Assets/Data/baseUrl';
 import { DataContext } from '../../../../Assets/Data/DataContext';
 
-function PopupImage({ handleInputPhoto, showPopup, onClose, handleSaveData }) {
+function PopupImage({ handleInputPhoto, showPopup, onClose, handleSaveId }) {
     const [userImg, setUserImg] = useState([]);
     const { token } = useContext(DataContext);
     useEffect(() => {
@@ -38,7 +38,7 @@ function PopupImage({ handleInputPhoto, showPopup, onClose, handleSaveData }) {
                 </div>
 
                 {userImg.map((img, index) => (
-                    <img key={index} src={img.imageUrl} alt={`User Image ${index + 1}`} className='img-thumbnail' onClick={() => { handleInputPhoto(img.imageUrl); handleSaveData(img) }} />
+                    <img key={index} src={img.imageUrl} alt={`User Image ${index + 1}`} className='img-thumbnail' onClick={() => { handleInputPhoto(img.imageUrl); handleSaveId(img.id) }} />
                 ))}
 
             </div>
